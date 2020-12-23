@@ -9,13 +9,13 @@
 </template>
 
 <style lang="sass" scoped>
- @import '~~/assets/sass/common'
- @import '~~/assets/sass/default'
+@import '~~/assets/sass/common'
+@import '~~/assets/sass/default'
 </style>
 
 <script>
-import Header from '~~/components/static/header'
-import Footer from '~~/components/static/footer'
+import Header from '~~/components/admin/static/header'
+import Footer from '~~/components/admin/static/footer'
 export default {
   components: {
     Header,

@@ -3,8 +3,9 @@
 </template>
 
 <script>
-import MainContent from '~~/components/content/'
+import MainContent from '~~/components/admin/content'
 export default {
+  layout: 'admin',
   components: {
     MainContent,
   },
