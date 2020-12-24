@@ -7,6 +7,10 @@
       <Specialists :course_specialists="item.peoples" :name="item.name" />
       <ConsistsOf :consists="item.consists_of" />
       <InfoCourses :info_courses="item.info_courses" />
+      <div v-if="popup">
+      <Dialog :course="item" />
+      </div>
+      <button class="button--green" @click="updateCourse">Show modal</button>
     </div>
   </div>
 </template>
@@ -16,13 +20,15 @@ import courses from './constant';
 import Specialists from './specialists';
 import ConsistsOf from './consists_of';
 import InfoCourses from './info_courses';
+import Dialog from './dialog-window';
 import axios from 'axios';
 export default {
   name: 'Courses',
   components: {
     Specialists,
     ConsistsOf,
-    InfoCourses
+    InfoCourses,
+    Dialog
   },
   data() {
     return {
@@ -33,7 +39,9 @@ export default {
       SPECIALISTS: courses.SPECIALISTS,
       CONSISTS_OF: courses.CONSISTS_OF,
       COURSES_TITLE: courses.COURSES_TITLE,
+      UPDATE: courses.UPDATE,
       course: [],
+      popup: false,
     }
   },
   mounted() {
@@ -41,5 +49,10 @@ export default {
       .get('http://localhost:3008/api/courses')
       .then((res) => (this.course = res.data))
   },
+  methods: {
+    updateCourse() {
+      this.popup = !this.popup;
+    }
+  }
 }
 </script>

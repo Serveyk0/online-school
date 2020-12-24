@@ -48,7 +48,7 @@ export default {
       this.user_in = true;
       axios
       .get('http://localhost:3008/api/users/local')
-      .then((res) => (user = res.data))
+      .then((res) => (this.user = res.data))
     }
   },
   methods: {

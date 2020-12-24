@@ -15,7 +15,7 @@ module.exports = {
     title: 'Nuxt APP',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport',    content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'description', content: 'description', hid: 'description' },
     ],
     link: [
@@ -47,7 +47,7 @@ module.exports = {
     },
   },
 
-  
+
   generate: {
     cache: {
       ignore: [
@@ -154,7 +154,7 @@ module.exports = {
 
       order: 'cssnanoLast'
     },
-    extend (config, ctx) {
+    extend(config, ctx) {
       const ORIGINAL_TEST = '/\\.(png|jpe?g|gif|svg|webp)$/i'
       const vueSvgLoader = [
         {
