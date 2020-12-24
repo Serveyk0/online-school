@@ -7,7 +7,7 @@
         <Footer />
       </div>
       <div v-else>
-        <In />
+        <In :method="updateUserIn"/>
       </div>
     </div>
   </div>
@@ -43,12 +43,18 @@ export default {
     }
   },
   mounted() {
+    // localStorage.removeItem("id");
     if (localStorage.id) {
-      user_in = true;
+      this.user_in = true;
       axios
       .get('http://localhost:3008/api/users/local')
       .then((res) => (user = res.data))
     }
   },
+  methods: {
+    updateUserIn () {
+      this.user_in = !this.user_in;
+    }
+  }
 }
 </script>

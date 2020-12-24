@@ -16,7 +16,7 @@ import axios from 'axios'
 
 export default {
   name: 'Authorisation',
-  props: [ 'user_auth' ],
+  props: { method: { type: Function } },
   data: () => ({
     title: _Authorisation.TITLE,
     NAME: _Authorisation.NAME,
@@ -45,12 +45,12 @@ export default {
         .then((res) => {
           console.log(res.data.id)
           if (res.data.id !== '') {
-            localStorage.setItem('id', res.data.id)
-            this.$emit(this.user_auth, true)
-            user_auth = true
+            localStorage.setItem('id', res.data.id);
+            this.method();
           }
         })
     },
   },
+  
 }
 </script>

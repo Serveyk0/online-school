@@ -5,6 +5,7 @@ const QUOTE_RIGHT = "»";
 const SPECIALISTS = "Спеціалісти курсу";
 const CONSISTS_OF = "Курс складається з";
 const COURSES_TITLE = "З курсу ви дізнаєтесь:";
+const UPDATE = "Оновити";
 
 export default {
     REGISTRSTION: REGISTRSTION,
@@ -13,5 +14,6 @@ export default {
     QUOTE_RIGHT: QUOTE_RIGHT,
     SPECIALISTS: SPECIALISTS,
     CONSISTS_OF: CONSISTS_OF,
-    COURSES_TITLE: COURSES_TITLE
+    COURSES_TITLE: COURSES_TITLE,
+    UPDATE: UPDATE,
 }

@@ -7,6 +7,7 @@
       <Specialists :course_specialists="item.peoples" :name="item.name" />
       <ConsistsOf :consists="item.consists_of" />
       <InfoCourses :info_courses="item.info_courses" />
+      <button :click="onUpdate">{{UPDATE}}</button>
     </div>
   </div>
 </template>
@@ -33,6 +34,7 @@ export default {
       SPECIALISTS: courses.SPECIALISTS,
       CONSISTS_OF: courses.CONSISTS_OF,
       COURSES_TITLE: courses.COURSES_TITLE,
+      UPDATE: courses.UPDATE,
       course: [],
     }
   },
@@ -41,5 +43,10 @@ export default {
       .get('http://localhost:3008/api/courses')
       .then((res) => (this.course = res.data))
   },
+  methods: {
+    onUpdate() {
+      console.log("update");
+    }
+  }
 }
 </script>

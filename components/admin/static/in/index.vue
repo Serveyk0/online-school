@@ -1,12 +1,12 @@
 <template>
   <div class="">
     <div v-if="user_auth">
-      <Authorisation :user_auth="user_auth"/>
+      <Authorisation :method="method"/>
     </div>
     <div v-else>
       <Registration />
     </div>
-    <button v-on:click="user_auth=!user_auth">{{user_auth ? AUTHORISATION : REGISTRATION}}</button>
+    <button v-on:click="user_auth=!user_auth">{{!user_auth ? AUTHORISATION : REGISTRATION}}</button>
   </div>
 </template>
 
@@ -17,6 +17,7 @@ import Authorisation from '~~/components/admin/static/in/authorisation';
 import _In from './constant';
 export default {
   name: 'In',
+  props: { method: { type: Function } },
   components: { Registration, Authorisation },
   data: () => ({
     REGISTRATION: _In.REGISTRATION,
@@ -32,5 +33,10 @@ export default {
       ],
     }
   },
+  methods: {
+    updateUserAuth() {
+      user_auth = !user_auth;
+    }
+  }
 }
 </script>

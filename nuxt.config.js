@@ -23,7 +23,7 @@ module.exports = {
     ]
   },
   serverMiddleware: [
-    { path: "/api", handler: "~/server/index.js" }
+    { path: "/server", handler: "~/server/index.js" }
   ],
   loading: { color: '#ddd' },
   css: [
