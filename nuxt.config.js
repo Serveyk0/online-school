@@ -3,7 +3,11 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default
 const isDev = process.env.NODE_ENV !== 'production'
 
 module.exports = {
+  target: 'static',
   mode: 'universal',
+  generate: {
+    dir: 'my-dist'
+  },
   head: {
     htmlAttrs: {
       lang: 'ru'
@@ -19,7 +23,7 @@ module.exports = {
     ]
   },
   serverMiddleware: [
-    { path: "/server", handler: "~/server/index.js" }
+    { path: "/api", handler: "~/server/index.js" }
   ],
   loading: { color: '#ddd' },
   css: [
@@ -45,7 +49,12 @@ module.exports = {
 
   
   generate: {
-    crawler: true // default - true
+    cache: {
+      ignore: [
+        // When something changed in the docs folder, do not re-build via webpack
+        'docs'
+      ]
+    }
   },
   webfontloader: {
     events: false,

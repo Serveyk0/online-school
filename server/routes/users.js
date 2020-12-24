@@ -8,19 +8,24 @@ router.get("/", async (req, res) => {
     res.set('Access-Control-Allow-Origin', '*')
     try {
         const _user = await User.find({ email: req.query.email })
-        console.log(_user.length);
+        console.log(req.query);
         if (_user.length === 0)
             throw ({ message: "Не существует пользователя с таким логином" });
 
+        console.log(_user[0]);
         var key = sha512(_user[0].name);
         var plaintext = _user[0].password;
         _user[0].password = aes256.decrypt(key, plaintext);
 
+        console.log(_user[0].password);
+        console.log(req.query.password);
+        console.log(_user[0].password ===  req.query.password);
         if (_user[0].password !== req.query.password)
             throw ({ message: "Не верный логин или пароль" });
         else {
-            localStorage.setItem('id', _user[0]._id);
-            await res.json({ name: _user[0].name, surname: _user[0].surname });
+            console.log("not set");
+            console.log("set");
+            await res.json({ id: _user[0]._id, name: _user[0].name, surname: _user[0].surname });
         }
     } catch (err) {
         res.status(500).json({ message: err.message });

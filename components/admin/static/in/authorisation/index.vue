@@ -12,8 +12,11 @@
 
 <script>
 import _Authorisation from './constant'
+import axios from 'axios'
+
 export default {
   name: 'Authorisation',
+  props: [ 'user_auth' ],
   data: () => ({
     title: _Authorisation.TITLE,
     NAME: _Authorisation.NAME,
@@ -33,11 +36,20 @@ export default {
         password: this.password,
       }
       axios
-        .get(`http://localhost:3008/api/users`, form)
-        .then((res) => console.log(res))
-      ;
-        (this.email = ''),
-        (this.password = '')
+        .get(`http://localhost:3008/api/users`, {
+          params: {
+            email: this.email,
+            password: this.password,
+          },
+        })
+        .then((res) => {
+          console.log(res.data.id)
+          if (res.data.id !== '') {
+            localStorage.setItem('id', res.data.id)
+            this.$emit(this.user_auth, true)
+            user_auth = true
+          }
+        })
     },
   },
 }

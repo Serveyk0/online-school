@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div v-if="user_auth">
-      <Authorisation />
+      <Authorisation :user_auth="user_auth"/>
     </div>
     <div v-else>
       <Registration />

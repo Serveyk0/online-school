@@ -19,9 +19,10 @@
 </style>
 
 <script>
-import Header from '~~/components/admin/static/header'
-import Footer from '~~/components/admin/static/footer'
-import In from '~~/components/admin/static/in'
+import Header from '~~/components/admin/static/header';
+import Footer from '~~/components/admin/static/footer';
+import In from '~~/components/admin/static/in';
+import axios from 'axios';
 export default {
   components: {
     Header,

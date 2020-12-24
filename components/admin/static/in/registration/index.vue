@@ -15,7 +15,9 @@
 
 
 <script>
-import _Registration from './constant'
+import _Registration from './constant';
+import axios from 'axios';
+
 export default {
   name: 'Registration',
   data: () => ({
