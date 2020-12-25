@@ -1,13 +1,12 @@
 <template>
   <div class="modal">
-    <input name="text" :value="name" />
+    <input name="text" :v-model="name" :value="name" v-on:input="changeName" />
     <Specialists :specialists="course.peoples" />
   </div>
 </template>
 
 <style lang="sass" scoped>
-@import '~~/assets/sass/common'
-@import '~~/assets/sass/default'
+@import '~~/assets/sass/modal'
 </style>
 
 <script>
@@ -26,9 +25,11 @@ export default {
   },
   mounted() {
       this.name = this.course.name;
-      this.peoples = this.course.peoples;
-      this.consists = this.course.consists;
-      this.courses_info = this.course.courses_info;
+  },
+  methods: {
+    changeName(e){
+      this.course.name = e.target.value;
+    }
   }
 }
 </script>

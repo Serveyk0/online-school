@@ -7,6 +7,8 @@
 
 <style lang="sass" scoped>
  @import '~~/assets/sass/main-content'
+ @import '~~/assets/sass/common'
+ @import '~~/assets/sass/default'
 </style>
 
 

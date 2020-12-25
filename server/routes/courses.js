@@ -13,18 +13,19 @@ router.get("/", async (req, res) =>
     }
 })
 
-// router.post("/", async (req, res, next) => 
-// {
-//     const course = new Course({
-//         name: req.body.name,
-//         href: req.body.href
-//     });
-//     try {
-//         const new_course = course.save();
-//         await res.status(201).json(new_course);
-//     } catch (err) {
-//         res.status(400).json({ message: err.message });
-//     }
-// })
+router.post("/update", async (req, res, next) => 
+{
+    console.log(req.body)
+    // const my_course = req.body;
+    // const course = new Course({
+    //     my_course
+    // });
+    // try {
+    //     course.updateOne({_id: req.body._id}, { $set: { "name": req.body.name } } );
+    //     await res.status(201);
+    // } catch (err) {
+    //     res.status(400).json({ message: err.message });
+    // }
+})
 
 module.exports = router;

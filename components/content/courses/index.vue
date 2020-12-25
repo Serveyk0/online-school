@@ -7,28 +7,39 @@
       <Specialists :course_specialists="item.peoples" :name="item.name" />
       <ConsistsOf :consists="item.consists_of" />
       <InfoCourses :info_courses="item.info_courses" />
-      <div v-if="popup">
-      <Dialog :course="item" />
-      </div>
-      <button class="button--green" @click="updateCourse">Show modal</button>
+
+      <input type="checkbox" id="toggle" />
+      <label for="toggle" @click="updateCourse">Open Overlay</label>
+      <dialog class="grid">
+        <div v-if="popup">
+          <Dialog :course="item" />
+        </div>
+        <label for="toggle">close overlay</label>
+      </dialog>
+      <button v-on:click="saveUpdateCourse(item)">Update Course</button>
     </div>
   </div>
 </template>
 
+
+<style lang="sass" scoped>
+@import '~~/assets/sass/courses'
+</style>
+
 <script>
-import courses from './constant';
-import Specialists from './specialists';
-import ConsistsOf from './consists_of';
-import InfoCourses from './info_courses';
-import Dialog from './dialog-window';
-import axios from 'axios';
+import courses from './constant'
+import Specialists from './specialists'
+import ConsistsOf from './consists_of'
+import InfoCourses from './info_courses'
+import Dialog from './dialog-window'
+import axios from 'axios'
 export default {
   name: 'Courses',
   components: {
     Specialists,
     ConsistsOf,
     InfoCourses,
-    Dialog
+    Dialog,
   },
   data() {
     return {
@@ -51,8 +62,19 @@ export default {
   },
   methods: {
     updateCourse() {
-      this.popup = !this.popup;
+      this.popup = !this.popup
+    },
+    saveUpdateCourse(item) {
+      const form = {
+        name: item.name,
+        peoples: item.peoples,
+        _id: item._id,
+        info_courses: item.info_courses,
+        consists_of: item.consists_of
+      }
+      console.log(form);
+      axios.post(`http://localhost:3008/api/courses/update`, item);
     }
-  }
+  },
 }
 </script>
