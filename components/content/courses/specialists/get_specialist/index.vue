@@ -1,10 +1,10 @@
 <template>
   <fragment>
-    <img
+    <!-- <img
       class="one-specialist__image"
       :src="require(`~/static/images/${img}.jpg`)"
       :alt="img"
-    />
+    /> -->
     <p class="one-specialist__name">{{ name }}</p>
     <p class="one-specialist__profession">{{ profession }}</p>
   </fragment>

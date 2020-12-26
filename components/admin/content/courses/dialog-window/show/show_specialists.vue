@@ -22,14 +22,14 @@
         :value="specialist.profession"
         v-on:input="(event) => changeField(event, 'profession', index)"
       />
-      <button v-on:click="addSpecialist">Add specialist</button>
 
-      <!-- <input
+      <input
+      v-if="index !== 0"
         type="file"
         id="file"
         ref="file"
-        v-on:change="handleFileUpload()"
-      /> -->
+        v-on:change="(event) => handleFileUpload(event, index)"
+      />
     </div>
   </div>
 </template> 
@@ -37,7 +37,7 @@
 <script>
 export default {
   name: 'Specialists',
-  props: ['specialists', 'file'],
+  props: ['specialists', 'file', 'files'],
   methods: {
     changeField(event, field, index) {
       this.specialists.forEach((e, i) => {
@@ -46,13 +46,14 @@ export default {
         }
       })
     },
-    addSpecialist() {
-      this.specialists.push({img:"", file:"", name: "", profession:""}) 
-      console.log(this.specialists);
+    handleFileUpload(e, index) {
+      const file = e.target.files[0];
+      this.specialists.forEach((e, i) => {
+        if (i === index) {
+          this.files.push(file);
+        }
+      })
     },
-    // handleFileUpload() {
-    //   this.file = this.$refs.file.files[0]
-    // },
   },
 }
 </script>
