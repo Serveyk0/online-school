@@ -1,7 +1,7 @@
 <template>
   <div class="modal">
     <input name="text" :v-model="name" :value="name" v-on:input="changeName" />
-    <Specialists :specialists="course.peoples" />
+    <Specialists :specialists="course.peoples" :file="file"/>
   </div>
 </template>
 

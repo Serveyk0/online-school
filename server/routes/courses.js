@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Course = require("../models/courses");
+const mongoose = require('mongoose');
 
 router.get("/", async (req, res) => 
 {
@@ -15,17 +16,24 @@ router.get("/", async (req, res) =>
 
 router.post("/update", async (req, res, next) => 
 {
-    console.log(req.body)
-    // const my_course = req.body;
-    // const course = new Course({
-    //     my_course
-    // });
-    // try {
-    //     course.updateOne({_id: req.body._id}, { $set: { "name": req.body.name } } );
-    //     await res.status(201);
-    // } catch (err) {
-    //     res.status(400).json({ message: err.message });
-    // }
+    console.log(req.body._id);
+    var query = {name:"Здоровий малюк"};
+    Course.findByIdAndUpdate(req.body._id, {name: req.body.name}, {new: true}, function(err, result){
+        mongoose.disconnect();
+        if(err) return console.log(err);
+        console.log("Обновленный объект", result);
+    });
+})
+
+router.post("/uploadImage", async (req, res, next) => 
+{
+    console.log(req.body._id);
+    var query = {name:"Здоровий малюк"};
+    Course.findByIdAndUpdate(req.body._id, {name: req.body.name}, {new: true}, function(err, result){
+        mongoose.disconnect();
+        if(err) return console.log(err);
+        console.log("Обновленный объект", result);
+    });
 })
 
 module.exports = router;
