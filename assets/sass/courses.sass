@@ -28,3 +28,12 @@ dialog
     -ms-transform: translate(-50%,-50%)
     transform: translate(-50%,-50%)
     grid-template-rows: max-content min-content
+
+.active-modal
+    visibility: hidden
+    opacity: 0
+    position: relative
+    z-index: -1
+    &:checked
+        dialog
+            display: grid

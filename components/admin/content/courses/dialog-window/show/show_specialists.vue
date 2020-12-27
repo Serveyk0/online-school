@@ -1,5 +1,6 @@
 <template>
   <div class="specialists">
+    <h3>Спеціалісти курсу</h3>
     <div
       class="one-specialist"
       v-for="(specialist, index) in specialists"
@@ -7,7 +8,7 @@
     >
       <!-- <img
         class="one-specialist__image"
-        :src="require(`~/static/images/${specialist.img}.jpg`)"
+        :src="require(`~/static/images/${specialist.img}`)"
         :alt="specialist.img"
       /> -->
       <input
@@ -24,7 +25,6 @@
       />
 
       <input
-      v-if="index !== 0"
         type="file"
         id="file"
         ref="file"
@@ -51,6 +51,7 @@ export default {
       this.specialists.forEach((e, i) => {
         if (i === index) {
           this.files.push(file);
+          this.specialists[i].img=file.name;
         }
       })
     },

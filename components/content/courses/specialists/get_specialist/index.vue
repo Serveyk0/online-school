@@ -2,7 +2,7 @@
   <fragment>
     <!-- <img
       class="one-specialist__image"
-      :src="require(`~/static/images/${img}.jpg`)"
+      :src="require(`~/static/images/${img}`)"
       :alt="img"
     /> -->
     <p class="one-specialist__name">{{ name }}</p>

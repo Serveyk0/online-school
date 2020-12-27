@@ -16,16 +16,10 @@ export default {
     before_text: {
       type: String,
       required: true,
-      validator: function (value) {
-        return value !== ''
-      },
     },
     text: {
       type: String,
       required: true,
-      validator: function (value) {
-        return value !== ''
-      },
     },
   },
 }

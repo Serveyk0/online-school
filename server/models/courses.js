@@ -12,6 +12,10 @@ let schema = new Schema({
     consists_of: {
         type: Array,
         required: true
+    },
+    info_courses:{
+        type: Array,
+        required: true
     }
 });
 

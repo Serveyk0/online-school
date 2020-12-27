@@ -4,8 +4,8 @@
     <div class="consist-block">
       <div
         class="consist-one"
-        v-for="consist in consists"
-        :key="consist.text"
+        v-for="(consist, index) in consists"
+        :key="index"
       >
         <GetConsists :before_text="consist.before_text" :text="consist.text" />
       </div>

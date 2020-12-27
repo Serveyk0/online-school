@@ -7,7 +7,7 @@
     >
       <!-- <img
         class="one-specialist__image"
-        :src="require(`~/static/images/${specialist.img}.jpg`)"
+        :src="require(`~/static/images/${specialist.img}`)"
         :alt="specialist.img"
       /> -->
       <input

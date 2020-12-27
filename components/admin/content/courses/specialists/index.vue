@@ -27,20 +27,10 @@ export default {
     course_specialists: {
       type: Array,
       required: true,
-      validator: function (value) {
-        return (
-          value.length !== 0
-        )
-      },
     },
     name: {
       type: String,
       required: true,
-      validator: function (value) {
-        return (
-          value !== ""
-        )
-      },
     },
   },
   data() {

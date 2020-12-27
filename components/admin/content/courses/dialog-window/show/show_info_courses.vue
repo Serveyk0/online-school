@@ -7,8 +7,12 @@
         v-for="(course, index) in info_courses"
         :key="index"
       >
-        <p class="course-number">{{ index + 1 }}</p>
-        <p class="course-text">{{ course }}</p>
+        <input
+          class="course-text"
+          :v-model="course"
+          :value="course"
+          v-on:input="(event) => changeField(event, index)"
+        />
       </div>
     </div>
   </div>
@@ -16,25 +20,22 @@
 
 <script>
 import infoCourses from './constant'
-import GetInfo from './get_info'
 export default {
-  name: 'InfoCourses',
-  components: {
-    GetInfo,
-  },
-  props: {
-    info_courses: {
-      type: Array,
-      required: true,
-      validator: function (value) {
-        return value.length !== 0
-      },
+  name: 'ShowInfoCourses',
+  props: ['info_courses'],
+  methods: {
+    changeField(event, index) {
+      this.$set(this.info_courses, index, event.target.value)
     },
   },
   data() {
     return {
       COURSES_TITLE: infoCourses.COURSES_TITLE,
+      info: [],
     }
+  },
+  mounted() {
+    this.info = this.info_courses
   },
 }
 </script>

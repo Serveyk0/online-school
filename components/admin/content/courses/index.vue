@@ -1,5 +1,14 @@
 <template>
   <div class="courses">
+    <input type="checkbox" id="toggle" />
+    <label for="toggle" @click="addCourse">add Overlay</label>
+    <button @click="addCourseDb">add</button>
+    <dialog class="grid">
+      <div v-if="popup_add">
+        <Dialog :course="course[course.length - 1]" :files="files" />
+      </div>
+      <label for="toggle">close</label>
+    </dialog>
     <div class="course" v-for="item in course" :key="item._id">
       <h2 class="course__title">
         {{ COURSE + QUOTE_LEFT + item.name + QUOTE_RIGHT }}
@@ -53,6 +62,7 @@ export default {
       popup: false,
       check_img: 0,
       files: [],
+      popup_add: false,
     }
   },
   mounted() {
@@ -64,13 +74,26 @@ export default {
     updateCourse() {
       this.popup = !this.popup
     },
+    addCourse() {
+      const new_course = {
+        name: '',
+        info_courses: [''],
+        consists_of: [{ before_text: '', text: '' }],
+        peoples: [{ name: '', profession: '', img: '' }],
+      }
+      this.course.push(new_course)
+      this.popup_add = !this.popup_add
+    },
+    addCourseDb() {
+      axios.post(`http://localhost:3008/api/courses`, this.course[this.course.length - 1])
+    },
     saveUpdateCourse(item) {
       const form = {
+        _id: item._id,
         name: item.name,
         peoples: item.peoples,
-        _id: item._id,
-        info_courses: item.info_courses,
         consists_of: item.consists_of,
+        info_courses: item.info_courses,
       }
       for (let j = 0; j < item.peoples.length; j++) {
         if (item.peoples[j].img === '') {
@@ -80,20 +103,16 @@ export default {
       }
       console.log(this.files)
       for (let i = 0; i < this.files.length; i++) {
-        let formData = new FormData();
-            formData.append('file', this.files[i]);
-        axios
-          .post(`http://localhost:3008/api/courses/uploadImage`, formData,
-                {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }})
-          .then((res) => {
-            console.log(res.data)
-            // this.item.peoples[check_img++] = res.data;
-          })
+        let formData = new FormData()
+        formData.append('file', this.files[i])
+        axios.post(`http://localhost:3008/api/courses/uploadImage`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
       }
-      // axios.post(`http://localhost:3008/api/courses/update`, item)
+      console.log(form)
+      axios.post(`http://localhost:3008/api/courses/update`, item)
     },
   },
 }
