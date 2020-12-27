@@ -1,12 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Course = require("../models/courses");
-const mongoose = require('mongoose');
-
 
 var multer = require('multer');
-
-const PATH = './public/';
 
 
 const storage = multer.diskStorage({
@@ -55,8 +51,18 @@ router.post("/", async (req, res, next) =>
     }
 })
 
+router.delete("/:id", (req, res) => {
+    let query = { _id: req.params.id }
+    Course.deleteOne(query, (err) => {
+      if(err){
+        res.send({message: "Error while deleting todo", check_delete: true})
+      }else{
+        res.send("Todo deleted")
+      }
+    })
+  })
+
 router.post("/update", async (req, res, next) => {
-    console.log(req.body);
     Course.updateOne({_id: req.body._id}, req.body, { new: true }, function (err, result) {
         if (err)
             res.status(500).json({ message: err.message });

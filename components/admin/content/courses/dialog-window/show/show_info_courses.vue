@@ -31,11 +31,7 @@ export default {
   data() {
     return {
       COURSES_TITLE: infoCourses.COURSES_TITLE,
-      info: [],
     }
-  },
-  mounted() {
-    this.info = this.info_courses
   },
 }
 </script>

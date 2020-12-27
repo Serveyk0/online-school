@@ -11,8 +11,8 @@
 
 
 <script>
-import OnlineSchool from '~~/components/admin/content/online-school';
-import Courses      from '~~/components/admin/content/courses';
+import OnlineSchool from '~~/components/content/online-school';
+import Courses      from '~~/components/content/courses';
 export default {
   name: 'MainContent',
     components: {

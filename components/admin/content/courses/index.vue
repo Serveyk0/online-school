@@ -17,7 +17,7 @@
       <ConsistsOf :consists="item.consists_of" />
       <InfoCourses :info_courses="item.info_courses" />
       <input type="checkbox" id="toggle" />
-      <label for="toggle" @click="updateCourse">Ope Overlay</label>
+      <label for="toggle" @click="updateCourse">Ope Overla</label>
       <dialog class="grid">
         <div v-if="popup">
           <Dialog :course="item" :files="files" />
@@ -25,6 +25,7 @@
         <label for="toggle">close overlay</label>
       </dialog>
       <button v-on:click="saveUpdateCourse(item)">Update Course</button>
+      <button v-on:click="deleteCourse(item._id)">delete</button>
     </div>
   </div>
 </template>
@@ -86,6 +87,13 @@ export default {
     },
     addCourseDb() {
       axios.post(`http://localhost:3008/api/courses`, this.course[this.course.length - 1])
+    },
+    deleteCourse(id) {
+      axios.delete(`http://localhost:3008/api/courses/${id}`)
+      .then(res => {
+        if ( res.data.check_delete)
+          this.course = this.course.filter(c => c._id !== id)
+      });
     },
     saveUpdateCourse(item) {
       const form = {
