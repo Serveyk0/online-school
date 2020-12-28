@@ -1,13 +1,14 @@
 <template>
   <div class="courses">
-    <input type="checkbox" id="toggle2" />
-    <label for="toggle2" @click="addCourse">add Overlay</label>
+    <button @click="addCourse">add Overlay</button>
     <button @click="addCourseDb">add</button>
-    <dialog class="grid">
-      <div v-if="popup_add">
-        <Dialog :course="course[course.length - 1]" :files="files" />
-      </div>
-      <label for="toggle2">close</label>
+    <dialog v-if="popup_add" class="grid">
+      <Dialog
+        :course="course[course.length - 1]"
+        :files="files"
+        :close_course="closeCourse"
+        :add_method="addCourseDb"
+      />
     </dialog>
     <div class="course" v-for="(item, index) in course" :key="index">
       <h2 class="course__title">
@@ -16,13 +17,17 @@
       <Specialists :course_specialists="item.peoples" :name="item.name" />
       <ConsistsOf :consists="item.consists_of" />
       <InfoCourses :info_courses="item.info_courses" />
-      <input type="checkbox" id="toggle" />
-      <label for="toggle" @click="updateCourse">Ope Overla</label>
-      <dialog class="grid">
-        <div v-if="popup">
-          <Dialog :course="item" :files="files" />
-        </div>
-        <label for="toggle">close overlay</label>
+      <button @click="updateCourse(index)">update Overlay</button>
+      <dialog v-if="popup === index" class="grid">
+        <Dialog
+          :course="item"
+          :files="files"
+          :close_course="closeCourse"
+          :update_method="saveUpdateCourse"
+          :delete_method="deleteCourse"
+          :text="'Update Course'"
+          :_id="item._id"
+        />
       </dialog>
       <button v-on:click="saveUpdateCourse(item)">Update Course</button>
       <button v-on:click="deleteCourse(item._id, index)">delete</button>
@@ -40,6 +45,7 @@ import Specialists from './specialists'
 import ConsistsOf from './consists_of'
 import InfoCourses from './info_courses'
 import Dialog from './dialog-window'
+import SureWindow from './sure_window'
 import axios from 'axios'
 export default {
   name: 'Courses',
@@ -48,6 +54,7 @@ export default {
     Dialog,
     ConsistsOf,
     InfoCourses,
+    SureWindow
   },
   data() {
     return {
@@ -60,7 +67,7 @@ export default {
       COURSES_TITLE: courses.COURSES_TITLE,
       UPDATE: courses.UPDATE,
       course: [],
-      popup: false,
+      popup: -1,
       check_img: 0,
       files: [],
       popup_add: false,
@@ -72,8 +79,12 @@ export default {
       .then((res) => (this.course = res.data))
   },
   methods: {
-    updateCourse() {
-      this.popup = !this.popup
+    updateCourse(index) {
+      this.popup = index
+    },
+    closeCourse() {
+      this.popup_add = false
+      this.popup = -1
     },
     addCourse() {
       const new_course = {
@@ -85,19 +96,23 @@ export default {
       this.course.push(new_course)
       this.popup_add = !this.popup_add
     },
+    closeCourse() {
+      this.popup_add = false
+      this.popup = false
+    },
     addCourseDb() {
-      axios.post(
-        `http://localhost:3008/api/courses`,
-        this.course[this.course.length - 1]
-      )
-      .then(res => this.course[this.course.length - 1]._id=res.data._id);
-      
+      axios
+        .post(
+          `http://localhost:3008/api/courses`,
+          this.course[this.course.length - 1]
+        )
+        .then((res) => (this.course[this.course.length - 1]._id = res.data._id))
     },
     deleteCourse(id, index) {
       axios.delete(`http://localhost:3008/api/courses/${id}`).then((res) => {
         console.log(res.data)
         if (res.data.check_delete) {
-          this.course.splice(this.course.indexOf(index));
+          this.course.splice(this.course.indexOf(index))
         }
       })
     },

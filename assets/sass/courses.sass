@@ -3,13 +3,6 @@
     opacity: 0
     position: relative
     z-index: -1
-
-#toggle:checked ~ dialog
-    display: grid
-
-#toggle2:checked ~ dialog
-    display: grid
-
 label
     background: skyblue
     color: white
@@ -22,6 +15,7 @@ label
         transform: translateY(-10px)
 
 dialog
+    display: grid
     animation: appear 350ms ease-in 1
     margin: auto
     position: fixed
