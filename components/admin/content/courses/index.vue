@@ -9,7 +9,7 @@
       </div>
       <label for="toggle">close</label>
     </dialog>
-    <div class="course" v-for="item in course" :key="item._id">
+    <div class="course" v-for="(item, index) in course" :key="index">
       <h2 class="course__title">
         {{ COURSE + QUOTE_LEFT + item.name + QUOTE_RIGHT }}
       </h2>
@@ -25,7 +25,7 @@
         <label for="toggle">close overlay</label>
       </dialog>
       <button v-on:click="saveUpdateCourse(item)">Update Course</button>
-      <button v-on:click="deleteCourse(item._id)">delete</button>
+      <button v-on:click="deleteCourse(item._id, index)">delete</button>
     </div>
   </div>
 </template>
@@ -86,14 +86,20 @@ export default {
       this.popup_add = !this.popup_add
     },
     addCourseDb() {
-      axios.post(`http://localhost:3008/api/courses`, this.course[this.course.length - 1])
+      axios.post(
+        `http://localhost:3008/api/courses`,
+        this.course[this.course.length - 1]
+      )
+      .then(res => this.course[this.course.length - 1]=res.data._id);
+      
     },
-    deleteCourse(id) {
-      axios.delete(`http://localhost:3008/api/courses/${id}`)
-      .then(res => {
-        if ( res.data.check_delete)
-          this.course = this.course.filter(c => c._id !== id)
-      });
+    deleteCourse(id, index) {
+      axios.delete(`http://localhost:3008/api/courses/${id}`).then((res) => {
+        console.log(res.data)
+        if (res.data.check_delete) {
+          this.course.splice(this.course.indexOf(index));
+        }
+      })
     },
     saveUpdateCourse(item) {
       const form = {

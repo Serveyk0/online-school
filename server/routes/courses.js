@@ -45,7 +45,8 @@ router.post("/", async (req, res, next) =>
     const course = new Course(req.body);
     try {
         const new_course = course.save();
-        await res.status(201).json(new_course);
+        console.log(await new_course)
+        await res.status(201).json(await new_course);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
@@ -53,11 +54,12 @@ router.post("/", async (req, res, next) =>
 
 router.delete("/:id", (req, res) => {
     let query = { _id: req.params.id }
+    console.log(query);
     Course.deleteOne(query, (err) => {
       if(err){
-        res.send({message: "Error while deleting todo", check_delete: true})
+        res.send({message: "Error while deleting todo", check_delete: false})
       }else{
-        res.send("Todo deleted")
+        res.send({message: "Todo deleted", check_delete: true});
       }
     })
   })

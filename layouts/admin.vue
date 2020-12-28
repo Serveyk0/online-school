@@ -1,14 +1,15 @@
 <template>
   <div class="common grid">
-    <div class="container_wrapper grid align-content-space-between">
-      <div v-if="user_in">
-        <Header />
-        <Nuxt />
-        <Footer />
-      </div>
-      <div v-else>
-        <In :method="updateUserIn"/>
-      </div>
+    <div
+      v-if="user_in"
+      class="container_wrapper grid align-content-space-between"
+    >
+      <Header />
+      <Nuxt />
+      <Footer />
+    </div>
+    <div v-else class="container_wrapper grid align-content-space-between">
+      <In :method="updateUserIn" />
     </div>
   </div>
 </template>
@@ -19,10 +20,10 @@
 </style>
 
 <script>
-import Header from '~~/components/admin/static/header';
-import Footer from '~~/components/admin/static/footer';
-import In from '~~/components/admin/static/in';
-import axios from 'axios';
+import Header from '~~/components/admin/static/header'
+import Footer from '~~/components/admin/static/footer'
+import In from '~~/components/admin/static/in'
+import axios from 'axios'
 export default {
   components: {
     Header,
@@ -45,16 +46,16 @@ export default {
   mounted() {
     // localStorage.removeItem("id");
     if (localStorage.id) {
-      this.user_in = true;
+      this.user_in = true
       axios
-      .get('http://localhost:3008/api/users/local')
-      .then((res) => (this.user = res.data))
+        .get('http://localhost:3008/api/users/local')
+        .then((res) => (this.user = res.data))
     }
   },
   methods: {
-    updateUserIn () {
-      this.user_in = !this.user_in;
-    }
-  }
+    updateUserIn() {
+      this.user_in = !this.user_in
+    },
+  },
 }
 </script>
