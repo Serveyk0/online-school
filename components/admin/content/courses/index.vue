@@ -1,7 +1,6 @@
 <template>
   <div class="courses">
     <button @click="addCourse">add Overlay</button>
-    <button @click="addCourseDb">add</button>
     <dialog v-if="popup_add" class="grid">
       <Dialog
         :course="course[course.length - 1]"
@@ -30,7 +29,14 @@
         />
       </dialog>
       <button v-on:click="saveUpdateCourse(item)">Update Course</button>
-      <button v-on:click="deleteCourse(item._id, index)">delete</button>
+      <button v-on:click="delete_active(index)">delete</button>
+      <dialog v-if="show_delete === index" class="grid">
+        <SureWindow
+          :_id="item._id"
+          :delete_course="deleteCourse"
+          :close_delete="closeDelete"
+        />
+      </dialog>
     </div>
   </div>
 </template>
@@ -54,7 +60,7 @@ export default {
     Dialog,
     ConsistsOf,
     InfoCourses,
-    SureWindow
+    SureWindow,
   },
   data() {
     return {
@@ -71,6 +77,7 @@ export default {
       check_img: 0,
       files: [],
       popup_add: false,
+      show_delete: -1,
     }
   },
   mounted() {
@@ -85,6 +92,12 @@ export default {
     closeCourse() {
       this.popup_add = false
       this.popup = -1
+    },
+    closeDelete() {
+      this.show_delete = -1
+    },
+    delete_active(index) {
+      this.show_delete = index
     },
     addCourse() {
       const new_course = {
@@ -107,6 +120,7 @@ export default {
           this.course[this.course.length - 1]
         )
         .then((res) => (this.course[this.course.length - 1]._id = res.data._id))
+      this.popup_add = false
     },
     deleteCourse(id, index) {
       axios.delete(`http://localhost:3008/api/courses/${id}`).then((res) => {

@@ -1,7 +1,7 @@
 <template>
   <div class="modal">
-    <button v-on:click="addInfoCourses">no</button>
-    <button v-on:click="close_course">yes</button>
+    <button v-on:click="closeCourse">no</button>
+    <button v-on:click="deleteCourse">yes</button>
   </div>
 </template>
 
@@ -12,14 +12,19 @@
 <script>
 export default {
   name: 'SureWindow',
-  props: [
-  ],
-  components: {  },
+  props: ['_id', 'delete_course', 'close_delete'],
+  components: {},
   data() {
-    return {
-    }
+    return {}
   },
   methods: {
+    closeCourse() {
+      this.close_delete();
+    },
+    deleteCourse() {
+      this.delete_course(this._id)
+      this.close_delete();
+    },
   },
 }
 </script>

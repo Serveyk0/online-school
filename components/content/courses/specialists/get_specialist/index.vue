@@ -19,11 +19,11 @@ export default {
     img: {
       type: String,
       required: true,
-      validator: function (value) {
-        return (
-          value !== ""
-        )
-      },
+      // validator: function (value) {
+      //   return (
+      //     value !== ""
+      //   )
+      // },
     },
     name: {
       type: String,

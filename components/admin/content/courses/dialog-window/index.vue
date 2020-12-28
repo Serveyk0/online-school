@@ -69,8 +69,5 @@ export default {
       this.course.consists_of.push({ before_text: '', text: '' })
     },
   },
-  mounted() {
-    console.log(this.course)
-  },
 }
 </script>

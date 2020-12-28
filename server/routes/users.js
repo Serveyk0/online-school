@@ -22,6 +22,11 @@ router.get("/", async (req, res) => {
     }
 })
 
+router.get("/all_users", async (req, res) => {
+    const _user = await User.find({}, {_id:0, password: 0})
+    await res.json(_user);
+})
+
 router.get("/local", async (req, res) => {
     res.set('Access-Control-Allow-Origin', '*')
     try {
