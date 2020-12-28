@@ -1,13 +1,13 @@
 <template>
   <div class="courses">
-    <input type="checkbox" id="toggle" />
-    <label for="toggle" @click="addCourse">add Overlay</label>
+    <input type="checkbox" id="toggle2" />
+    <label for="toggle2" @click="addCourse">add Overlay</label>
     <button @click="addCourseDb">add</button>
     <dialog class="grid">
       <div v-if="popup_add">
         <Dialog :course="course[course.length - 1]" :files="files" />
       </div>
-      <label for="toggle">close</label>
+      <label for="toggle2">close</label>
     </dialog>
     <div class="course" v-for="(item, index) in course" :key="index">
       <h2 class="course__title">
@@ -90,7 +90,7 @@ export default {
         `http://localhost:3008/api/courses`,
         this.course[this.course.length - 1]
       )
-      .then(res => this.course[this.course.length - 1]=res.data._id);
+      .then(res => this.course[this.course.length - 1]._id=res.data._id);
       
     },
     deleteCourse(id, index) {

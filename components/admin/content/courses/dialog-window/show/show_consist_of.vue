@@ -15,6 +15,8 @@
           :value="consist.text"
           v-on:input="(event) => changeField(event, 'text', index)"
         />
+        
+      <button v-if="consists.length > 1" v-on:click="deleteConsist(index)">Delete Consist</button>
       </div>
     </div>
   </div>
@@ -41,6 +43,9 @@ export default {
         }
       })
     },
+    deleteConsist(index) {
+      this.consists.splice(this.consists.indexOf(index));
+    }
   },
   data() {
     return {

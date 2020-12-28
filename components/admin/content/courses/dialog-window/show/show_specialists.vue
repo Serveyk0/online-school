@@ -30,6 +30,8 @@
         ref="file"
         v-on:change="(event) => handleFileUpload(event, index)"
       />
+      
+      <button v-if="specialists.length > 1" v-on:click="deleteSpecialist(index)">Delete Specialist</button>
     </div>
   </div>
 </template> 
@@ -55,6 +57,9 @@ export default {
         }
       })
     },
+    deleteSpecialist(index) {
+      this.specialists.splice(this.specialists.indexOf(index));
+    }
   },
 }
 </script>

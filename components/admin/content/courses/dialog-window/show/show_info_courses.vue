@@ -13,6 +13,7 @@
           :value="course"
           v-on:input="(event) => changeField(event, index)"
         />
+      <button v-if="info_courses.length > 1" v-on:click="deleteInfo(index)">Delete Info</button>
       </div>
     </div>
   </div>
@@ -27,6 +28,9 @@ export default {
     changeField(event, index) {
       this.$set(this.info_courses, index, event.target.value)
     },
+    deleteInfo(index) {
+      this.info_courses.splice(this.info_courses.indexOf(index));
+    }
   },
   data() {
     return {
