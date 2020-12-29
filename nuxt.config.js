@@ -37,6 +37,7 @@ module.exports = {
     'cookie-universal-nuxt',
     '@nuxtjs/style-resources',
     '@nuxtjs/sitemap',
+    '@nuxtjs/dotenv',
   ],
   sitemap: {
     hostname: "http://localhost:3005",

@@ -19,7 +19,7 @@ const userRoutes = require("./routes/users.js");
 app.use("/api/users", userRoutes);
 async function start() {
   try {
-    mongoose.connect('mongodb+srv://serveyko:STalker19@cluster0.hvvrs.mongodb.net/courses?retryWrites=true&w=majority', {
+    mongoose.connect(`mongodb+srv://${process.env.LOGIN}:${process.env.PWD}@${process.env.CLUSTER}.hvvrs.mongodb.net/${process.env.COLEECTION}?retryWrites=true&w=majority`, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: false,

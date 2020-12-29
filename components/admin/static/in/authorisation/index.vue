@@ -45,12 +45,16 @@ export default {
         .then((res) => {
           console.log(res.data.id)
           if (res.data.id !== '') {
-            localStorage.setItem('id', res.data.id);
-            this.method();
+            if (res.data.status !== false) {
+              localStorage.setItem('id', res.data.id)
+              this.method()
+            }
+            else {
+              console.log("status 0");
+            }
           }
         })
     },
   },
-  
 }
 </script>

@@ -17,6 +17,10 @@ let schema = new Schema({
         type: String,
         required: true
     },
+    status: {
+        type: Boolean,
+        required: true
+    },
 });
 
 module.exports = model("user", schema);

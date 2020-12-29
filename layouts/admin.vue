@@ -46,10 +46,12 @@ export default {
   mounted() {
     // localStorage.removeItem("id");
     if (localStorage.id) {
-      this.user_in = true
-      axios
-        .get('http://localhost:3008/api/users/local')
-        .then((res) => (this.user = res.data))
+      axios.get('http://localhost:3008/api/users/local').then((res) => {
+        if (res.data.status !== false) {
+          this.user = res.data
+          this.user_in = true
+        }
+      })
     }
   },
   methods: {

@@ -39,6 +39,7 @@ export default {
         surname: this.surname,
         email: this.email,
         password: this.password,
+        status: 0
       }
       axios
         .post(`http://localhost:3008/api/users`, form)

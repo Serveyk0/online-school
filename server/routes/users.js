@@ -16,25 +16,26 @@ router.get("/", async (req, res) => {
         if (_user[0].password !== req.query.password)
             throw ({ message: "Не верный логин или пароль" });
         else
-            await res.json({ id: _user[0]._id, name: _user[0].name, surname: _user[0].surname });
+            await res.json({ id: _user[0]._id, name: _user[0].name, surname: _user[0].surname, status: _user[0].status });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 })
 
 router.get("/all_users", async (req, res) => {
-    const _user = await User.find({}, {_id:0, password: 0})
+    const _user = await User.find({}, { password: 0 })
+    console.log(_user);
     await res.json(_user);
 })
 
 router.get("/local", async (req, res) => {
     res.set('Access-Control-Allow-Origin', '*')
     try {
-        const _user = await User.find({ id: req.query.id })
+        const _user = await User.find({ id: req.query.id }, { password: 0 })
         console.log(_user.length);
         if (_user.length === 0)
             throw ({ message: "Не существует пользователя с таким логином" });
-        await res.json({ name: _user[0].name, surname: _user[0].surname });
+        await res.json({ name: _user[0].name, surname: _user[0].surname, status: _user[0].status });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -54,6 +55,21 @@ router.post("/", async (req, res, next) => {
     try {
         const new_user = user.save();
         await res.status(201).json(new_user);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+})
+
+router.post("/update", async (req, res, next) => {
+    const users = req.body;
+    try {
+        for (let i = 0; i < users.length; i++) {
+            User.updateOne({ _id: users[i]._id }, users[i], { new: true }, function (err, result) {
+                if (err)
+                    res.status(500).json({ message: err.message });
+                console.log("Обновленный объект", result);
+            });
+        }
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
