@@ -17,6 +17,8 @@ const courseRoutes = require("./routes/courses.js");
 app.use("/api/courses", courseRoutes);
 const userRoutes = require("./routes/users.js");
 app.use("/api/users", userRoutes);
+const mailRoutes = require("./routes/mail.js");
+app.use("/api/mail", mailRoutes);
 async function start() {
   try {
     mongoose.connect(`mongodb+srv://${process.env.LOGIN}:${process.env.PWD}@${process.env.CLUSTER}.hvvrs.mongodb.net/${process.env.COLEECTION}?retryWrites=true&w=majority`, {

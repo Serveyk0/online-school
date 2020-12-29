@@ -31,7 +31,7 @@ router.get("/all_users", async (req, res) => {
 router.get("/local", async (req, res) => {
     res.set('Access-Control-Allow-Origin', '*')
     try {
-        const _user = await User.find({ id: req.query.id }, { password: 0 })
+        const _user = await User.find({ id: req.body.id }, { password: 0 })
         console.log(_user.length);
         if (_user.length === 0)
             throw ({ message: "Не существует пользователя с таким логином" });
@@ -42,15 +42,16 @@ router.get("/local", async (req, res) => {
 })
 
 router.post("/", async (req, res, next) => {
-    const cryptName = sha512(req.query.name);
+    const cryptName = sha512(req.body.name);
     var key = cryptName;
-    var plaintext = req.query.password;
+    var plaintext = req.body.password;
     var password = aes256.encrypt(key, plaintext);
     const user = new User({
-        name: req.query.name,
-        surname: req.query.surname,
-        email: req.query.email,
-        password: password
+        name: req.body.name,
+        surname: req.body.surname,
+        email: req.body.email,
+        password: password,
+        status: req.body.status
     });
     try {
         const new_user = user.save();

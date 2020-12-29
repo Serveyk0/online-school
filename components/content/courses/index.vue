@@ -21,7 +21,6 @@ import courses from './constant'
 import Specialists from './specialists'
 import ConsistsOf from './consists_of'
 import InfoCourses from './info_courses'
-import Dialog from './dialog-window'
 import axios from 'axios'
 export default {
   name: 'Courses',
@@ -29,7 +28,6 @@ export default {
     Specialists,
     ConsistsOf,
     InfoCourses,
-    Dialog,
   },
   data() {
     return {

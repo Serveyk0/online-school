@@ -1,5 +1,6 @@
 <template>
   <div class="main-content">
+    <button @click="exit">exit</button>
     <dialog v-if="show" class="grid">
       <ShowUsers />
     </dialog>
@@ -35,6 +36,10 @@ export default {
     showUsers() {
       this.show = !this.show
     },
+    exit() {
+      localStorage.removeItem('id');
+      window.location.reload(true);
+    }
   },
 }
 </script>
