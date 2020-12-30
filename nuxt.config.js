@@ -27,7 +27,7 @@ module.exports = {
   ],
   loading: { color: '#ddd' },
   css: [
-    './assets/sass/global-variables.sass'
+    './assets/sass/default.sass'
   ],
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
@@ -66,7 +66,7 @@ module.exports = {
   },
   styleResources: {
     // your settings here
-    // scss: ['./assets/scss/global-variables.scss'], // alternative: scss
+    // sass: ['./assets/sass/default.sass'], // alternative: scss
     less: [],
     stylus: []
   },
