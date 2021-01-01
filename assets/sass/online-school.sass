@@ -1,13 +1,82 @@
 .online-school
-    // .online-school__text
-    .online-school__registration-button
-        margin: 0 auto
-        color: #fff
-        font-size: 15px
-        border-radius: 400px
-        background-color: #5e91b7
-        outline: none
-        border: 0
-        padding: 13px 60px
-        &:hover
-            background-color: #ffad97
+    grid-template-columns: 2fr 1fr
+    grid-column-gap: 30px
+    .online-school__left
+        grid-template-rows: repeat(2,min-content)
+        max-width: 450px
+        grid-row-gap: 30px
+        text-align: justify
+        text-align-last: center
+        width: 90%
+        line-height: 1.5
+        .online-school__text
+        .online-school__registration-button
+            margin: 0 auto
+            color: #fff
+            font-size: 15px
+            border-radius: 400px
+            background-color: #5e91b7
+            outline: none
+            border: 0
+            padding: 13px 60px
+            &:hover
+                background-color: #ffad97
+    .online-school__right
+        height: min-content
+        max-width: 400px
+        grid-template-columns: 0% 55% 39% 5%
+        align-items: start
+        grid-template-rows: 25% 37.5% 37.5%
+        @media screen and ( max-width: 576px )
+            margin-right: 50px
+        @media screen and ( max-width: 959px )
+            margin-top: 60px
+        .squares
+            max-width: 400px
+            grid-column-start: 1
+            position: relative
+            z-index: 1
+            grid-column-end: 5
+            grid-row-start: 1
+            grid-row-end: 4
+            @media screen and ( max-width: 576px )
+                max-width: 100% !important
+        .sun
+            grid-column-start: 3
+            animation: spin 40s linear infinite
+            grid-row-start: 1
+            grid-row-end: 3
+            width: 85%
+            margin-left: 65%
+            margin-top: -30%
+        .wrapper_star
+            grid-column-start: 1
+            grid-column-end: 5
+            grid-row-start: 3
+            z-index: 1
+            width: auto
+            position: relative
+            height: 101%
+            .star
+                animation: spin 40s linear infinite
+                height: 100%
+                width: auto
+                height: 90%
+                position: absolute
+                margin: 0 auto
+                margin-left: 5%
+
+
+@keyframes spin
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
+
+@keyframes spin2
+    0%
+        transform: translate(-50%, 50%) rotate(0deg)
+        -webkit-transform: translate(-50%, 50%) rotate(0deg)
+    100%
+        transform: translate(-50%, 50%) rotate(360deg)
+        -webkit-transform: translate(-50%, 50%) rotate(360deg)

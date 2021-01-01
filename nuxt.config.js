@@ -27,7 +27,8 @@ module.exports = {
   ],
   loading: { color: '#ddd' },
   css: [
-    './assets/sass/global-variables.sass'
+    './assets/sass/default.sass',
+    './assets/fonts/font-face.sass' // Path to your css file
   ],
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
@@ -38,6 +39,7 @@ module.exports = {
     '@nuxtjs/style-resources',
     '@nuxtjs/sitemap',
     '@nuxtjs/dotenv',
+    'nuxt-font-loader-strategy'
   ],
   sitemap: {
     hostname: "http://localhost:3005",
@@ -56,6 +58,9 @@ module.exports = {
         'docs'
       ]
     }
+  },
+  fontLoader: {
+    url: '~~/assets/fonts/font-face.sass' // Path to your css file
   },
   webfontloader: {
     events: false,

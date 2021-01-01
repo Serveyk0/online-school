@@ -1,5 +1,5 @@
 <template>
-  <div class="common grid">
+  <div class="common grid margin-0-auto">
     <div class="container_wrapper grid align-content-space-between">
       <Header />
       <Nuxt />

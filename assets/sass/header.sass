@@ -1,1 +1,12 @@
-// .header
+@import "./mixins/mixin_font_size"
+    
+.header
+    margin-bottom: 50px
+    .header__title
+        color: #434c5f
+        font-size: 15px
+        letter-spacing: 1px
+        line-height: 1.5
+        font-family: "Rotonda"
+        text-align: center
+        @include fluidFontSize(15px, 36px, 360px, 1280px, 15px)

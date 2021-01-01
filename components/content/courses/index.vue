@@ -1,6 +1,6 @@
 <template>
   <div class="courses">
-    <div class="course" v-for="item in course" :key="item._id">
+    <div class="course grid grid-gap" v-for="item in course" :key="item._id">
       <h2 class="course__title">
         {{ COURSE + QUOTE_LEFT + item.name + QUOTE_RIGHT }}
       </h2>

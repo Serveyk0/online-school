@@ -1,3 +1,47 @@
+@import "./mixins/mixin_font_size"
+    
+.courses
+    .course
+        .course__title
+            @include fluidFontSize(20px, 48px, 360px, 1280px, 15px)
+            font-family: "Rotonda"
+            margin-top: 20px
+        .specialists
+            .specialists__title
+                font-family: "Rotonda"
+                @include fluidFontSize(15px, 36px, 360px, 1280px, 15px)
+            .specialists-all
+                grid-template-columns: repeat(auto-fit,minmax(150px,350px))
+                .one-specialist
+                    text-align: center
+                    position: relative
+                    grid-row-gap: 10px
+                    grid-template-rows: 300px
+                    .one-specialist__name
+                        padding: 0
+                        font-weight: 500
+                        @include fluidFontSize(15px, 24px, 360px, 1280px, 15px)
+                        font-family: "Rotonda"
+                        width: 80%
+                        text-align: center
+                    .one-specialist__profession
+                        width: 80%
+                        text-align: center
+                    .people_image
+                        position: relative
+                        .one-specialist__image
+                            margin: 0 auto
+                            max-height: 300px
+                            max-width: 300px
+                            border-radius: 30px
+                        .star
+                            position: absolute
+                            -webkit-transform: translate(50%,10%)
+                            transform: translate(50%,10%)
+                            right: 0
+                            height: 75px
+                            bottom: 0
+
 #toggle
     visibility: hidden
     opacity: 0

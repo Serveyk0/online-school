@@ -20,8 +20,10 @@
 <script>
 import _Register from './constant';
 import axios from 'axios';
+import Modal from './modal'
 export default {
   name: 'Registration',
+  components: { Modal },
   data() {
     return {
       registration: _Register.REGISTRATION,
