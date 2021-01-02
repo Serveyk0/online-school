@@ -27,8 +27,12 @@ module.exports = {
   ],
   loading: { color: '#ddd' },
   css: [
+<<<<<<< HEAD
     './assets/sass/default.sass',
     './assets/fonts/font-face.sass' // Path to your css file
+=======
+    './assets/sass/default.sass'
+>>>>>>> a44ce5b539d5bf1746ddc2a85f2c75dc9e81c8d8
   ],
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
@@ -71,7 +75,7 @@ module.exports = {
   },
   styleResources: {
     // your settings here
-    // scss: ['./assets/scss/global-variables.scss'], // alternative: scss
+    // sass: ['./assets/sass/default.sass'], // alternative: scss
     less: [],
     stylus: []
   },
