@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @import "./mixins/mixin_font_size"
     
 .courses
@@ -42,11 +41,90 @@
                             right: 0
                             height: 75px
                             bottom: 0
-
-=======
-.course
-    background: linear-gradient(#F5EEEE, #FFE0DD, #F5EEEE)
->>>>>>> a44ce5b539d5bf1746ddc2a85f2c75dc9e81c8d8
+        .info-courses
+            grid-row-gap: 30px
+            .info-courses__title
+                font-family: "Rotonda"
+                text-align: center
+                @include fluidFontSize(15px, 36px, 360px, 1280px, 15px)
+            .info-courses__block
+                grid-template-columns: repeat(auto-fit,minmax(200px,1fr))
+                grid-column-gap: 40px
+                grid-row-gap: 40px
+                -webkit-align-items: normal
+                align-items: normal
+                max-width: 900px
+                margin: 0 auto
+                -webkit-justify-content: start
+                justify-content: start
+                .course-one
+                    grid-template-columns: min-content 1fr
+                    grid-gap: 10px
+                    display: grid
+                    @include fluidFontSize(12px, 14px, 360px, 1280px, 15px)
+                    text-align: justify
+                    .course-text
+                        padding-top: 3px
+                        padding-left: 1px
+                        font-family: "Rotonda"
+                    .course-number
+                        margin: 0
+                        padding: 0
+                        height: 30px
+                        width: 30px
+                        background-color: #00bcd4
+                        display: grid
+                        justify-content: center
+                        align-items: center
+                        color: #fff
+                        border-radius: 20px
+        .consists-of
+            .consists-of__title
+                font-family: "Rotonda"
+                @include fluidFontSize(15px, 36px, 360px, 1280px, 15px)
+            .consist-block
+                position: relative
+                grid-template-columns: repeat(2,50%)
+                -webkit-align-content: normal
+                align-content: normal
+                -webkit-align-items: normal
+                align-items: normal
+                max-width: 1200px
+                position: relative
+                border-radius: 30px
+                overflow: hidden
+                .consist-block__text
+                    .consist-one
+                        .before-text
+                        .after-text
+                .consists-one__image
+                    img
+                        width: auto
+                        border-radius: 30px
+                        height: 300px
+                    @media screen and ( max-width: 1050px ) and ( min-width: 900px )
+                        height: 300px
+                    @media screen and ( max-width: 899px )
+                        height: 235px
+                    @media screen and ( max-width: 767px ) and ( min-width: 650px )
+                        height: 400px
+                    @media screen and ( max-width: 649px ) and ( min-width: 570px )
+                        height: 350px
+                    @media screen and ( max-width: 569px ) and ( min-width: 480px )
+                        height: 300px
+                    @media screen and ( max-width: 479px ) and ( min-width: 390px )
+                        height: 240px
+                    @media screen and ( max-width: 389px ) and ( min-width: 330px )
+                        height: 220px
+                    @media screen and ( max-width: 329px ) and ( min-width: 0px )
+                        height: 200px
+                .sun
+                    position: absolute
+                    transform: translate(-50%, 50%)
+                    -webkit-transform: translate(-50%, 50%)
+                    animation: spin2 40s linear infinite
+                    left: 50%
+                    bottom: -1px
 #toggle
     visibility: hidden
     opacity: 0
@@ -83,3 +161,18 @@ dialog
     &:checked
         dialog
             display: grid
+
+
+@keyframes spin
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
+
+@keyframes spin2
+    0%
+        transform: translate(-50%, 50%) rotate(0deg)
+        -webkit-transform: translate(-50%, 50%) rotate(0deg)
+    100%
+        transform: translate(-50%, 50%) rotate(360deg)
+        -webkit-transform: translate(-50%, 50%) rotate(360deg)

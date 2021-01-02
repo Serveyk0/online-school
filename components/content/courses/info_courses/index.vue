@@ -1,17 +1,21 @@
 <template>
-  <div class="info-courses">
-    <h3>{{ COURSES_TITLE }}</h3>
-    <div class="info-courses-block">
+  <div class="info-courses grid">
+    <h3 class="info-courses__title">{{ COURSES_TITLE }}</h3>
+    <div class="info-courses__block grid">
       <div
-        class="course-one"
+        class="course-one grid"
         v-for="(course, index) in info_courses"
         :key="index"
       >
-        <GetInfo :index="index + 1" :course="course" />
+        <GetInfo :index="index" :course="course" />
       </div>
     </div>
   </div>
 </template> 
+
+<style lang="sass" scoped>
+@import '~~/assets/sass/courses'
+</style>
 
 <script>
 import infoCourses from './constant';
