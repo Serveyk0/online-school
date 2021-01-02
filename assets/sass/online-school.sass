@@ -1,6 +1,8 @@
 .online-school
     grid-template-columns: 2fr 1fr
     grid-column-gap: 30px
+    @media screen and ( max-width: 767px )
+        grid-template-columns: 1fr
     .online-school__left
         grid-template-rows: repeat(2,min-content)
         max-width: 450px

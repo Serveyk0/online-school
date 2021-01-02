@@ -53,10 +53,11 @@
                 grid-row-gap: 40px
                 -webkit-align-items: normal
                 align-items: normal
-                max-width: 900px
                 margin: 0 auto
                 -webkit-justify-content: start
                 justify-content: start
+                @media screen and ( min-width: 1000px )
+                    max-width: 900px
                 .course-one
                     grid-template-columns: min-content 1fr
                     grid-gap: 10px
@@ -84,7 +85,6 @@
                 @include fluidFontSize(15px, 36px, 360px, 1280px, 15px)
             .consist-block
                 position: relative
-                grid-template-columns: repeat(2,50%)
                 -webkit-align-content: normal
                 align-content: normal
                 -webkit-align-items: normal
@@ -93,31 +93,54 @@
                 position: relative
                 border-radius: 30px
                 overflow: hidden
+                @media screen and ( min-width: 768px )
+                    grid-template-columns: repeat(2,50%)
                 .consist-block__text
+                    background-color: #fff
+                    border-radius: 30px
+                    grid-template-columns: repeat(2,1fr)
+                    grid-template-rows: repeat(2,1fr)
+                    grid-gap: 10px
+                    padding: 10px
+                    @media screen and ( max-width: 767px )
+                        grid-row-start: 2
                     .consist-one
+                        grid-template-columns: min-content 1fr
+                        grid-column-gap: 10px
+                        display: grid
+                        z-index: 1
+                        @include fluidFontSize(12px, 14px, 360px, 1280px, 15px)
+                        text-align: justify
                         .before-text
+                            @include fluidFontSize(30px, 50px, 360px, 1280px, 15px)
+                            text-align: center !important
+                            font-family: "Rotonda"
+                            color: #4caf50
+                            margin-block-start: 1em
+                            margin-block-end: 1em
                         .after-text
                 .consists-one__image
                     img
                         width: auto
                         border-radius: 30px
                         height: 300px
-                    @media screen and ( max-width: 1050px ) and ( min-width: 900px )
-                        height: 300px
-                    @media screen and ( max-width: 899px )
-                        height: 235px
-                    @media screen and ( max-width: 767px ) and ( min-width: 650px )
-                        height: 400px
-                    @media screen and ( max-width: 649px ) and ( min-width: 570px )
-                        height: 350px
-                    @media screen and ( max-width: 569px ) and ( min-width: 480px )
-                        height: 300px
-                    @media screen and ( max-width: 479px ) and ( min-width: 390px )
-                        height: 240px
-                    @media screen and ( max-width: 389px ) and ( min-width: 330px )
-                        height: 220px
-                    @media screen and ( max-width: 329px ) and ( min-width: 0px )
-                        height: 200px
+                        @media screen and ( max-width: 1050px ) and ( min-width: 900px )
+                            height: 300px
+                        @media screen and ( max-width: 899px )
+                            height: 235px
+                        @media screen and ( max-width: 767px ) and ( min-width: 650px )
+                            width: 100%
+                            height: auto
+                        @media screen and ( max-width: 649px ) and ( min-width: 570px )
+                            height: 350px
+                        @media screen and ( max-width: 569px ) and ( min-width: 480px )
+                            height: 300px
+                        @media screen and ( max-width: 479px ) and ( min-width: 390px )
+                            height: 240px
+                        @media screen and ( max-width: 389px ) and ( min-width: 330px )
+                            height: 220px
+                        @media screen and ( max-width: 329px ) and ( min-width: 0px )
+                            height: 200px
                 .sun
                     position: absolute
                     transform: translate(-50%, 50%)

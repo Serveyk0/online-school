@@ -1,10 +1,10 @@
 <template>
   <div class="consists-of">
     <h3 class="consists-of__title">{{ CONSISTS_OF }}</h3>
-    <div class="consist-block grid">
+    <div class="consist-block grid margin-0-auto">
       <div class="consist-block__text grid">
         <div
-          class="consist-one"
+          class="consist-one grid-align-center"
           v-for="consist in consists"
           :key="consist.text"
         >

@@ -5,8 +5,8 @@
         {{ COURSE + QUOTE_LEFT + item.name + QUOTE_RIGHT }}
       </h2>
       <Specialists :course_specialists="item.peoples" :name="item.name" />
-      <ConsistsOf :consists="item.consists_of" />
-      <InfoCourses :info_courses="item.info_courses" />
+      <!-- <ConsistsOf :consists="item.consists_of" />-->
+      <!-- <InfoCourses :info_courses="item.info_courses" />  -->
     </div>
   </div>
 </template>

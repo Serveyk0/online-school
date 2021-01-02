@@ -23,8 +23,8 @@ export default {
   },
   head() {
     return {
-      title: 'title',
-      meta: [{ hid: 'description', name: 'description', content: 'content' }],
+      title: 'ON-LINE школа',
+      meta: [{ hid: 'description', name: 'ON-LINE школа', content: 'Наша школа подарує Вам впевненість в собі та майбутньому. На наших заняттях Ви дізнаєтесь багато нового та цікавого не тільки про вагітність та пологи, а й як правильно доглядати за малюком від народження до року. Курс «Здоровий малюк» - це on-line курс спілкування із спеціалістами, а не заздалегідь записане відео.' }],
       link: [
         { rel: 'canonical', href: `http://localhost:3000${this.$route.path}` },
       ],
