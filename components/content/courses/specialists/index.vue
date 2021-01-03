@@ -3,7 +3,7 @@
     <h3 class="specialists__title">
       {{ SPECIALISTS + QUOTE_LEFT + name + QUOTE_RIGHT }}
     </h3>
-    <div class="specialists-all grid grid-align-center grid-justify-center">
+    <div class="specialists-all grid grid-align-center">
       <div
         class="one-specialist grid grid-align-center grid-justify-center"
         v-for="(specialist, index) in course_specialists"

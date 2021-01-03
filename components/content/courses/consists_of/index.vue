@@ -1,5 +1,5 @@
 <template>
-  <div class="consists-of">
+  <div class="consists-of grid">
     <h3 class="consists-of__title">{{ CONSISTS_OF }}</h3>
     <div class="consist-block grid margin-0-auto">
       <div class="consist-block__text grid">

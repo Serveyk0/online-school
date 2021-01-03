@@ -8,6 +8,10 @@ module.exports = {
   generate: {
     dir: 'my-dist'
   },
+  robots: {
+    UserAgent: '*',
+    Disallow: '/'
+  },
   head: {
     htmlAttrs: {
       lang: 'ru'
@@ -99,6 +103,10 @@ module.exports = {
   */
   build: {
     optimizeCss: false,
+    robots: {
+      UserAgent: '*',
+      Disallow: '/'
+    },
     filenames: {
       app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
       chunk: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',

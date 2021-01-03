@@ -1,16 +1,16 @@
 <template>
   <div class="common grid">
+    <Header />
     <div
       v-if="user_in"
-      class="container_wrapper grid align-content-space-between"
+      class="container_wrapper margin-0-auto grid align-content-space-between"
     >
-      <Header />
       <Nuxt />
-      <Footer />
     </div>
     <div v-else class="container_wrapper grid align-content-space-between">
       <In :method="updateUserIn" />
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -20,27 +20,28 @@
 </style>
 
 <script>
-import Header from '~~/components/admin/static/header'
-import Footer from '~~/components/admin/static/footer'
+import Header from '~~/components/static/header'
+import Footer from '~~/components/static/footer'
 import In from '~~/components/admin/static/in'
 import axios from 'axios'
 export default {
   components: {
     Header,
     Footer,
+    In,
   },
-  components: { In },
   data: () => ({
     user_in: false,
     user: null,
   }),
   head() {
     return {
-      title: 'title',
-      meta: [{ hid: 'description', name: 'description', content: 'content' }],
+      title: 'ON-LINE школа',
       link: [
-        { rel: 'canonical', href: `http://localhost:3000${this.$route.path}` },
-      ],
+        { 
+          rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' 
+        }
+      ]
     }
   },
   mounted() {

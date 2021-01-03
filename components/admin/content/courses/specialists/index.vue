@@ -1,10 +1,11 @@
 <template>
-  <div class="specialists">
+  <div class="specialists grid grid-gap">
     <h3 class="specialists__title">
       {{ SPECIALISTS + QUOTE_LEFT + name + QUOTE_RIGHT }}
     </h3>
+    <div class="specialists-all grid grid-align-center">
     <div
-      class="one-specialist"
+      class="one-specialist grid grid-align-center grid-justify-center"
       v-for="(specialist, index) in course_specialists"
       :key="index"
     >
@@ -14,8 +15,13 @@
         :profession="specialist.profession"
       />
     </div>
+    </div>
   </div>
 </template> 
+
+<style lang="sass" scoped>
+@import '~~/assets/sass/courses'
+</style>
 
 <script>
 import specialists from './constant';

@@ -6,6 +6,7 @@ const SPECIALISTS = "Спеціалісти курсу";
 const CONSISTS_OF = "Курс складається з";
 const COURSES_TITLE = "З курсу ви дізнаєтесь:";
 const UPDATE = "Оновити";
+const ADD = "Додати курс";
 
 export default {
     REGISTRSTION: REGISTRSTION,
@@ -16,4 +17,5 @@ export default {
     CONSISTS_OF: CONSISTS_OF,
     COURSES_TITLE: COURSES_TITLE,
     UPDATE: UPDATE,
+    ADD: ADD,
 }

@@ -1,10 +1,10 @@
 <template>
   <div class="main-content">
-    <button @click="exit">exit</button>
+    <button class="registration-button margin-bottom-50" @click="exit">{{EXIT}}</button>
     <dialog v-if="show" class="grid">
-      <ShowUsers />
+      <ShowUsers :close="showUsers" />
     </dialog>
-    <button class="show-users-button" v-on:click="showUsers">Show users</button>
+    <button class="show-users-button registration-button" v-on:click="showUsers">{{ SHOW_USER }}</button>
     <OnlineSchool />
     <Courses />
   </div>
@@ -18,8 +18,9 @@
 
 <script>
 import OnlineSchool from '~~/components/content/online-school'
-import Courses from '~~/components/content/courses'
+import Courses from '~~/components/admin/content/courses'
 import ShowUsers from '~~/components/admin/content/show-users'
+import show from './constant'
 export default {
   name: 'MainContent',
   components: {
@@ -30,6 +31,8 @@ export default {
   data() {
     return {
       show: false,
+      EXIT: show.EXIT,
+      SHOW_USER: show.SHOW_USER,
     }
   },
   methods: {
@@ -39,7 +42,7 @@ export default {
     exit() {
       localStorage.removeItem('id');
       window.location.reload(true);
-    }
+    },
   },
 }
 </script>

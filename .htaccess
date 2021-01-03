@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RedirectMatch 403 ^/padmin/.*$
+  RewriteRule ^ index \ .html $ - [L]
+  RewriteCond% {REQUEST_FILENAME}! -F
+  RewriteCond% {REQUEST_FILENAME}! -D
+  RewriteRule. /index.html [L]
+  SetEnvIf Request_URI "/padmin/admins.*" deny
+  Allow from YOUR_IP_ADDRESS
+  Deny from env=deny
+</IfModule>

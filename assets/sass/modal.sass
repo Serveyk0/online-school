@@ -1,1 +1,13 @@
+@import "./mixins/mixin_font_size"
+    
 .modal
+    grid-row-gap: 10px
+    color: #434c5f
+    letter-spacing: 1px
+    line-height: 1.5
+    font-family: "Rotonda Regular"
+    padding-bottom: 20px
+    text-align: center
+    @include fluidFontSize(15px, 20px, 360px, 1280px, 15px)
+    button
+        padding: 10px 20px

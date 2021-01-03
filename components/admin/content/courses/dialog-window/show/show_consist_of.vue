@@ -16,7 +16,7 @@
           v-on:input="(event) => changeField(event, 'text', index)"
         />
         
-      <button v-if="consists.length > 1" v-on:click="deleteConsist(index)">Delete Consist</button>
+      <button v-if="consists.length > 1" v-on:click="deleteConsist(index)">{{DELETE}}</button>
       </div>
     </div>
   </div>
@@ -50,6 +50,7 @@ export default {
   data() {
     return {
       CONSISTS_OF: consist.CONSISTS_OF,
+      DELETE: consist.DELETE,
     }
   },
 }

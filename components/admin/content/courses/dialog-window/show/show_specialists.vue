@@ -1,6 +1,6 @@
 <template>
   <div class="specialists">
-    <h3>Спеціалісти курсу</h3>
+    <h3>{{SPECIALISTS}}</h3>
     <div
       class="one-specialist"
       v-for="(specialist, index) in specialists"
@@ -31,12 +31,13 @@
         v-on:change="(event) => handleFileUpload(event, index)"
       />
       
-      <button v-if="specialists.length > 1" v-on:click="deleteSpecialist(index)">Delete Specialist</button>
+      <button v-if="specialists.length > 1" v-on:click="deleteSpecialist(index)">{{DELETE}}</button>
     </div>
   </div>
 </template> 
 
 <script>
+import infoCourses from './constant'
 export default {
   name: 'Specialists',
   props: ['specialists', 'file', 'files'],
@@ -59,6 +60,12 @@ export default {
     },
     deleteSpecialist(index) {
       this.specialists.splice(this.specialists.indexOf(index));
+    }
+  },
+  data() {
+    return {
+      DELETE: infoCourses.DELETE,
+      SPECIALISTS: infoCourses.SPECIALISTS,
     }
   },
 }

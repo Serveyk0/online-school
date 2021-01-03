@@ -1,0 +1,50 @@
+@import "./mixins/mixin_font_size"
+@import "./mixins/mixin_images"
+
+.footer
+    min-height: 100px
+    color: #ffffff
+    grid-row-gap: 10px
+    background-color: #292c2f
+    padding: 0px 0px 20px 0px
+    @media screen and ( min-width: 768px )
+        grid-template-columns: repeat(3, 1fr)
+    .footer_left_univercity
+        max-width: 80%
+        margin: 0 auto
+        line-height: 1.5
+        @include fluidFontSize(20px, 30px, 320px, 1920px, 18px)
+        color: #fff
+        font-weight: 600
+        .footer_left_be
+            color: #5383d3
+    .footer_center
+        grid-row-gap: 10px
+        a
+            color: #ffffff
+        .footer_center_mail
+            color: #5383d3
+            font-weight: 700
+    .footer_company_name
+        color: #8f9296
+        @media screen and ( min-width: 768px )
+            grid-column-start: 1
+            grid-column-end: 4
+    .footer_right
+        margin-top: 20px
+        grid-row-gap: 10px
+        .fa-facebook
+          @include background-image("facebook.png", center, transparent, contain)
+        .fa-telegram
+          @include background-image("telegram.png", center, transparent, contain)
+        .fa-instagram
+          @include background-image("instagram.png", center, transparent, contain)
+        .footer_links
+            display: grid
+            width: 35px
+            cursor: pointer
+            line-height: 30px
+            text-align: center
+            margin-right: 85px
+            .footer_links_text
+                padding-left: 40px

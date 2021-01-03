@@ -1,16 +1,18 @@
 <template>
   <div class="common grid margin-0-auto">
-    <div class="container_wrapper grid align-content-space-between">
-      <Header />
+    <Header />
+    <div
+      class="container_wrapper grid margin-0-auto align-content-space-between"
+    >
       <Nuxt />
-      <Footer />
     </div>
+    <Footer />
   </div>
 </template>
 
 <style lang="sass" scoped>
- @import '~~/assets/sass/common'
- @import '~~/assets/sass/default'
+@import '~~/assets/sass/common'
+@import '~~/assets/sass/default'
 </style>
 
 <script>
@@ -24,7 +26,19 @@ export default {
   head() {
     return {
       title: 'ON-LINE школа',
-      meta: [{ hid: 'description', name: 'ON-LINE школа', content: 'Наша школа подарує Вам впевненість в собі та майбутньому. На наших заняттях Ви дізнаєтесь багато нового та цікавого не тільки про вагітність та пологи, а й як правильно доглядати за малюком від народження до року. Курс «Здоровий малюк» - це on-line курс спілкування із спеціалістами, а не заздалегідь записане відео.' }],
+      meta: [
+        {
+          hid: 'description',
+          name: 'ON-LINE школа',
+          content:
+            'Наша школа подарує Вам впевненість в собі та майбутньому. На наших заняттях Ви дізнаєтесь багато нового та цікавого не тільки про вагітність та пологи, а й як правильно доглядати за малюком від народження до року. Курс «Здоровий малюк» - це on-line курс спілкування із спеціалістами, а не заздалегідь записане відео.',
+        },
+        {
+          hid: 'robots',
+          name: 'robots',
+          content: 'noindex, nofollow'
+        },
+      ],
       link: [
         { rel: 'canonical', href: `http://localhost:3000${this.$route.path}` },
       ],

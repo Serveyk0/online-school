@@ -1,15 +1,21 @@
 <template>
   <fragment>
-    <!-- <img
-      v-if="img != 0"
-      class="one-specialist__image"
-      :src="require(`~/static/images/${img}`)"
-      :alt="img"
-    /> -->
-    <p class="one-specialist__name">{{ name }}</p>
-    <p class="one-specialist__profession">{{ profession }}</p>
+    <div class="people_image">
+      <img
+        class="one-specialist__image"
+        :src="'/images/' + img"
+        :alt="img"
+      />
+      <img class="star" alt="star" src="/images/star2.png" />
+    </div>
+    <p class="one-specialist__name margin-0-auto">{{ name }}</p>
+    <p class="one-specialist__profession margin-0-auto">{{ profession }}</p>
   </fragment>
 </template> 
+
+<style lang="sass" scoped>
+@import '~~/assets/sass/courses'
+</style>
 
 <script>
 import { Fragment } from 'vue-fragment'
@@ -35,7 +41,19 @@ export default {
       required: true,
     },
   },
-  mounted() {
-  }
+  mounted() {},
+  methods: {
+    exists_img(path) {
+      console.log(1111)
+      try {
+        require(path)
+      console.log(2222)
+        return true
+      } catch (e) {
+      console.log(3333)
+        return false
+      }
+    },
+  },
 }
 </script>

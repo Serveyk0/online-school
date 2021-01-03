@@ -1,14 +1,16 @@
 <template>
   <div class="show-users">
-    <div v-for="(user, index) in users" :key="index">
-      <p>{{ user.name }}</p>
-      <p>{{ user.surname }}</p>
+    <div class="grid show-users__one" v-for="(user, index) in users" :key="index">
+      <p>{{NAME + ": " + user.name }}</p>
+      <p>{{SURNAME + ": " + user.surname }}</p>
+      <p>{{EMAIL + ": " + user.email }}</p>
       <div v-if="user._id !== id">
-      <label for="status">Має доступ {{user.status}}</label>
-      <input name="status" v-model="user.status" type="checkbox" />
+        <label for="status">{{ HAVE_ACCESS }}</label>
+        <input name="status" v-model="user.status" type="checkbox" />
       </div>
     </div>
-    <button @click="save">Save</button>
+    <button class="registration-button" @click="save">{{ SAVE }}</button>
+    <button class="registration-button" @click="close">{{ CLOSE }}</button>
   </div>
 </template> 
 
@@ -19,24 +21,33 @@
 
 <script>
 import axios from 'axios'
+import show from './constant'
 export default {
   name: 'ShowUsers',
+  props: ['close'],
   data() {
     return {
       users: [],
-      id: ''
+      id: '',
+      HAVE_ACCESS: show.HAVE_ACCESS,
+      SAVE: show.SAVE,
+      NAME: show.NAME,
+      SURNAME: show.SURNAME,
+      EMAIL: show.EMAIL,
+      CLOSE: show.CLOSE
     }
   },
   mounted() {
     axios
       .get('http://localhost:3008/api/users/all_users')
-      .then((res) => (this.users = res.data));
-      this.id = localStorage.id;
+      .then((res) => (this.users = res.data))
+    this.id = localStorage.id
   },
   methods: {
     save() {
-      axios.post(`http://localhost:3008/api/users/update`, this.users)
-    }
-  }
+      axios.post(`http://localhost:3008/api/users/update`, this.users);
+      this.close();
+    },
+  },
 }
 </script>

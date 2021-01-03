@@ -1,26 +1,57 @@
 <template>
-  <div class="modal">
-    <input
-      :v-model="course.name"
-      :value="course.name"
-      v-on:input="changeName"
-    />
-    <Specialists :specialists="course.peoples" :file="file" :files="files" />
-    <button v-on:click="addSpecialist">Add specialist</button>
-    <ShowConsistsOf :consists="course.consists_of" />
-    <button v-on:click="addConsistsOf">Add specialist</button>
-    <ShowInfoCourses :info_courses="course.info_courses" />
-    <button v-on:click="addInfoCourses">Add specialist</button>
-    <button v-on:click="close_course">Close</button>
-    <button v-if="_id !== undefined" v-on:click="update_method(course)">
-      Update
-    </button>
-    <button v-if="_id !== undefined" v-on:click="delete_method(_id)">
-      Delete
-    </button>
-    <button v-if="_id === undefined" v-on:click="add_method">
-      add
-    </button>
+  <div class="modal grid">
+    <div>
+      <h4>{{ COURSE_NAME }}</h4>
+      <input
+        :v-model="course.name"
+        :value="course.name"
+        v-on:input="changeName"
+      />
+    </div>
+    <div class="grid grid-gap-10">
+      <Specialists :specialists="course.peoples" :file="file" :files="files" />
+      <button class="registration-button" v-on:click="addSpecialist">
+        {{ ADD_SPECIALIST }}
+      </button>
+    </div>
+    <div class="grid grid-gap-10">
+      <ShowConsistsOf :consists="course.consists_of" />
+      <button class="registration-button" v-on:click="addConsistsOf">
+        {{ ADD_CONSISTS_OF }}
+      </button>
+    </div>
+    <div class="grid grid-gap-10">
+      <ShowInfoCourses :info_courses="course.info_courses" />
+      <button class="registration-button" v-on:click="addInfoCourses">
+        {{ ADD_INFO_COURSES }}
+      </button>
+    </div>
+    <div>
+      <button class="registration-button" v-on:click="close_course();">
+        {{ CLOSE }}
+      </button>
+      <button
+        class="registration-button"
+        v-if="_id !== undefined"
+        v-on:click="update_method(course); close_course()"
+      >
+        {{ UPDATE }}
+      </button>
+      <button
+        class="registration-button"
+        v-if="_id !== undefined"
+        v-on:click="delete_method(_id); close_course()"
+      >
+        {{ DELETE }}
+      </button>
+      <button
+        class="registration-button"
+        v-if="add_method !== undefined"
+        v-on:click="add_method"
+      >
+        {{ ADD }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -32,6 +63,7 @@
 import Specialists from './show/show_specialists'
 import ShowInfoCourses from './show/show_info_courses'
 import ShowConsistsOf from './show/show_consist_of'
+import _DIALOG from './constant'
 export default {
   name: 'Dialog',
   props: [
@@ -53,6 +85,14 @@ export default {
       consists: '',
       courses_info: '',
       file: '',
+      COURSE_NAME: _DIALOG.COURSE_NAME,
+      ADD_SPECIALIST: _DIALOG.ADD_SPECIALIST,
+      ADD_CONSISTS_OF: _DIALOG.ADD_CONSISTS_OF,
+      ADD_INFO_COURSES: _DIALOG.ADD_INFO_COURSES,
+      CLOSE: _DIALOG.CLOSE,
+      UPDATE: _DIALOG.UPDATE,
+      DELETE: _DIALOG.DELETE,
+      ADD: _DIALOG.ADD,
     }
   },
   methods: {

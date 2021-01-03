@@ -1,6 +1,6 @@
 <template>
   <div class="courses">
-    <button @click="addCourse">add Overlay</button>
+    <button class="registration-button" @click="addCourse">{{ADD}}</button>
     <dialog v-if="popup_add" class="grid">
       <Dialog
         :course="course[course.length - 1]"
@@ -16,7 +16,7 @@
       <Specialists :course_specialists="item.peoples" :name="item.name" />
       <ConsistsOf :consists="item.consists_of" />
       <InfoCourses :info_courses="item.info_courses" />
-      <button @click="updateCourse(index)">update Overlay</button>
+      <button class="registration-button update" @click="updateCourse(index)">{{UPDATE}}</button>
       <dialog v-if="popup === index" class="grid">
         <Dialog
           :course="item"
@@ -28,8 +28,6 @@
           :_id="item._id"
         />
       </dialog>
-      <button v-on:click="saveUpdateCourse(item)">Update Course</button>
-      <button v-on:click="delete_active(index)">delete</button>
       <dialog v-if="show_delete === index" class="grid">
         <SureWindow
           :_id="item._id"
@@ -71,6 +69,8 @@ export default {
       SPECIALISTS: courses.SPECIALISTS,
       CONSISTS_OF: courses.CONSISTS_OF,
       COURSES_TITLE: courses.COURSES_TITLE,
+      UPDATE: courses.UPDATE,
+      ADD: courses.ADD,
       UPDATE: courses.UPDATE,
       course: [],
       popup: -1,
@@ -114,6 +114,15 @@ export default {
       this.popup = false
     },
     addCourseDb() {
+      for (let i = 0; i < this.files.length; i++) {
+        let formData = new FormData()
+        formData.append('file', this.files[i])
+        axios.post(`http://localhost:3008/api/courses/uploadImage`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+      }
       axios
         .post(
           `http://localhost:3008/api/courses`,
@@ -144,7 +153,6 @@ export default {
           break
         }
       }
-      console.log(this.files)
       for (let i = 0; i < this.files.length; i++) {
         let formData = new FormData()
         formData.append('file', this.files[i])

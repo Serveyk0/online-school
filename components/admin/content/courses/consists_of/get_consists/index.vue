@@ -5,6 +5,10 @@
   </fragment>
 </template> 
 
+<style lang="sass" scoped>
+@import '~~/assets/sass/courses'
+</style>
+
 <script>
 import { Fragment } from 'vue-fragment';
 export default {

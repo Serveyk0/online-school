@@ -2,9 +2,8 @@
   <fragment>
     <div class="people_image">
       <img
-        v-if="img !== ''"
         class="one-specialist__image"
-        :src="require(`~/static/images/${img}`)"
+        :src="'/images/' + img"
         :alt="img"
       />
       <img class="star" alt="star" src="~~/static/images/star2.png" />
