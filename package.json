@@ -13,7 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.4",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/robots": "^2.4.2",
