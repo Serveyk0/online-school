@@ -2,15 +2,29 @@
     
 .courses
     .course
+        grid-row-gap: 35px
         .course__title
             @include fluidFontSize(20px, 48px, 360px, 1280px, 15px)
             font-family: "Rotonda"
             margin-top: 20px
+        .main-course
+            grid-template-columns: 1fr 1fr
+            position: relative
+            grid-column-gap: 50px
+            @media screen and ( max-width: 767px )
+                grid-template-columns: 1fr !important
+            .main-course__left
+                @include fluidFontSize(14px, 18px, 360px, 1280px, 15px)
+                line-height: 1.5
+                text-align: justify
+            .main-course__right
+                max-width: 100%
         .specialists
             .specialists__title
                 font-family: "Rotonda"
                 @include fluidFontSize(15px, 36px, 360px, 1280px, 15px)
             .specialists-all
+                grid-row-gap: 25px
                 grid-template-columns: repeat(auto-fit,minmax(150px,350px))
                 @media screen and ( max-width: 874px )
                     margin: 0 auto
@@ -64,7 +78,7 @@
                     grid-template-columns: min-content 1fr
                     grid-gap: 10px
                     display: grid
-                    @include fluidFontSize(12px, 14px, 360px, 1280px, 15px)
+                    @include fluidFontSize(14px, 16px, 360px, 1280px, 15px)
                     text-align: justify
                     .course-text
                         padding-top: 3px
@@ -92,14 +106,18 @@
                 align-content: normal
                 -webkit-align-items: normal
                 align-items: normal
+                width: 100%
                 max-width: 1200px
                 position: relative
                 border-radius: 30px
                 overflow: hidden
                 @media screen and ( min-width: 768px )
-                    grid-template-columns: repeat(2,50%)
+                    grid-template-columns: repeat(2,50%)                
+                textarea
+                    min-width: 300px
+                    min-height: 200px
                 .consist-block__text
-                    background-color: #fff
+                    background-color: #fffbcc
                     border-radius: 30px
                     grid-template-columns: repeat(2,1fr)
                     grid-template-rows: repeat(2,1fr)
@@ -112,15 +130,15 @@
                         grid-column-gap: 10px
                         display: grid
                         z-index: 1
-                        @include fluidFontSize(12px, 14px, 360px, 1280px, 15px)
-                        text-align: justify
+                        @include fluidFontSize(14px, 16px, 360px, 1280px, 15px)
                         .before-text
                             @include fluidFontSize(30px, 50px, 360px, 1280px, 15px)
                             text-align: center !important
                             font-family: "Rotonda"
                             color: #4caf50
-                            margin-block-start: 1em
-                            margin-block-end: 1em
+                            @media screen and ( max-width: 767px )  
+                                margin-block-start: 1em
+                                margin-block-end: 1em
                 .consists-one__image
                     border-radius: 30px
                     height: 300px
@@ -145,6 +163,7 @@
                         width: auto
                         height: 100%
                         max-width: 100%
+                        border-radius: 30px
                 .sun
                     position: absolute
                     transform: translate(-50%, 50%)

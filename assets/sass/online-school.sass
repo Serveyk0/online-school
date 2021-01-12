@@ -2,7 +2,7 @@
     grid-template-rows: repeat(3, min-content)
     grid-gap: 15px
 .online-school
-    grid-template-columns: 2fr 1fr
+    grid-template-columns: 2fr min-content
     grid-row-gap: 15px
     @media screen and ( max-width: 956px )
         grid-template-columns: 1fr
@@ -22,6 +22,8 @@
         grid-template-rows: 25% 37.5% 37.5%
         .squares
             max-width: 400px
+            max-height: 400px
+            margin: 0 0 0 auto
             grid-column-start: 1
             position: relative
             z-index: 1
@@ -44,13 +46,15 @@
             grid-row-start: 3
             z-index: 1
             width: auto
+            align-items: end
             position: relative
             height: 101%
             .star
                 animation: spin 40s linear infinite
                 height: 100%
                 width: auto
-                height: 90%
+                max-height: 100px
+                bottom: 10px
                 position: absolute
                 margin: 0 auto
                 margin-left: 5%

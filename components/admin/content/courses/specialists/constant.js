@@ -1,6 +1,6 @@
 const QUOTE_LEFT = "«";
 const QUOTE_RIGHT = "»";
-const SPECIALISTS = "Спеціалісти курсу ";
+const SPECIALISTS = "Ментори курсу ";
 
 export default {
     QUOTE_LEFT: QUOTE_LEFT,

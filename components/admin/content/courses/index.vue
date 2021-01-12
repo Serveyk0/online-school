@@ -1,5 +1,5 @@
 <template>
-  <div class="courses">
+  <div class="courses grid">
     <button class="registration-button" @click="addCourse">{{ADD}}</button>
     <dialog v-if="popup_add" class="grid">
       <Dialog
@@ -13,6 +13,7 @@
       <h2 class="course__title">
         {{ COURSE + QUOTE_LEFT + item.name + QUOTE_RIGHT }}
       </h2>
+      <MainCourse :course_text="item.main_course.text" :course_image="item.main_course.img" />
       <Specialists :course_specialists="item.peoples" :name="item.name" />
       <ConsistsOf :consists="item.consists_of" />
       <InfoCourses :info_courses="item.info_courses" />
@@ -48,6 +49,7 @@ import courses from './constant'
 import Specialists from './specialists'
 import ConsistsOf from './consists_of'
 import InfoCourses from './info_courses'
+import MainCourse from './main_course'
 import Dialog from './dialog-window'
 import SureWindow from './sure_window'
 import axios from 'axios'
@@ -59,6 +61,7 @@ export default {
     ConsistsOf,
     InfoCourses,
     SureWindow,
+    MainCourse,
   },
   data() {
     return {
@@ -103,6 +106,7 @@ export default {
       const new_course = {
         name: '',
         info_courses: [''],
+        main_course: { text: '', img: '' },
         consists_of: [{ before_text: '', text: '' }],
         peoples: [{ name: '', profession: '', img: '' }],
       }
@@ -114,6 +118,7 @@ export default {
       this.popup = false
     },
     addCourseDb() {
+      this.files = new Set(this.files);
       for (let i = 0; i < this.files.length; i++) {
         let formData = new FormData()
         formData.append('file', this.files[i])
@@ -146,13 +151,16 @@ export default {
         peoples: item.peoples,
         consists_of: item.consists_of,
         info_courses: item.info_courses,
+        main_course: { text: item.main_course.text, img: item.main_course.img }
       }
+
       for (let j = 0; j < item.peoples.length; j++) {
         if (item.peoples[j].img === '') {
           this.check_img = j
           break
         }
       }
+      this.files = new Set(this.files);
       for (let i = 0; i < this.files.length; i++) {
         let formData = new FormData()
         formData.append('file', this.files[i])

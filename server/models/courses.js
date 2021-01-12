@@ -16,6 +16,10 @@ let schema = new Schema({
     info_courses:{
         type: Array,
         required: true
+    },
+    main_course:{
+        type: Object,
+        required: true
     }
 });
 

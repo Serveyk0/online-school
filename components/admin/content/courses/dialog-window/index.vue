@@ -9,6 +9,7 @@
       />
     </div>
     <div class="grid grid-gap-10">
+      <ShowMainCourse :course_text="course.main_course" :files="files" />
       <Specialists :specialists="course.peoples" :file="file" :files="files" />
       <button class="registration-button" v-on:click="addSpecialist">
         {{ ADD_SPECIALIST }}
@@ -62,6 +63,7 @@
 <script>
 import Specialists from './show/show_specialists'
 import ShowInfoCourses from './show/show_info_courses'
+import ShowMainCourse from './show/show_main_course'
 import ShowConsistsOf from './show/show_consist_of'
 import _DIALOG from './constant'
 export default {
@@ -78,7 +80,7 @@ export default {
     'text',
     '_id',
   ],
-  components: { Specialists, ShowInfoCourses, ShowConsistsOf },
+  components: { Specialists, ShowInfoCourses, ShowConsistsOf, ShowMainCourse },
   data() {
     return {
       peoples: '',
