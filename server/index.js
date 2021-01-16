@@ -1,7 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const consola = require('consola');
-const { Nuxt, Builder } = require('nuxt');
 const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3007

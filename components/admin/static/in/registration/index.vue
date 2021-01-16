@@ -42,7 +42,7 @@ export default {
         status: false
       }
       axios
-        .post(`http://localhost:3008/api/users`, form)
+        .post(`http://${window.location.hostname}:3007/api/users`, form)
         .then((res) => console.log(res))
       ;(this.name = ''),
         (this.surname = ''),

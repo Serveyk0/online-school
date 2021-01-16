@@ -85,7 +85,7 @@ export default {
   },
   mounted() {
     axios
-      .get('http://localhost:3008/api/courses')
+      .get(`http://${window.location.hostname}:3007/api/courses`)
       .then((res) => (this.course = res.data))
   },
   methods: {
@@ -122,7 +122,7 @@ export default {
       for (let i = 0; i < this.files.length; i++) {
         let formData = new FormData()
         formData.append('file', this.files[i])
-        axios.post(`http://localhost:3008/api/courses/uploadImage`, formData, {
+        axios.post(`http://${window.location.hostname}:3007/api/courses/uploadImage`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -130,14 +130,14 @@ export default {
       }
       axios
         .post(
-          `http://localhost:3008/api/courses`,
+          `http://${window.location.hostname}:3007/api/courses`,
           this.course[this.course.length - 1]
         )
         .then((res) => (this.course[this.course.length - 1]._id = res.data._id))
       this.popup_add = false
     },
     deleteCourse(id, index) {
-      axios.delete(`http://localhost:3008/api/courses/${id}`).then((res) => {
+      axios.delete(`http://${window.location.hostname}:3007/api/courses/${id}`).then((res) => {
         console.log(res.data)
         if (res.data.check_delete) {
           this.course.splice(this.course.indexOf(index))
@@ -164,14 +164,14 @@ export default {
       for (let i = 0; i < this.files.length; i++) {
         let formData = new FormData()
         formData.append('file', this.files[i])
-        axios.post(`http://localhost:3008/api/courses/uploadImage`, formData, {
+        axios.post(`http://${window.location.hostname}:3007/api/courses/uploadImage`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         })
       }
       console.log(form)
-      axios.post(`http://localhost:3008/api/courses/update`, item)
+      axios.post(`http://${window.location.hostname}:3007/api/courses/update`, item)
     },
   },
 }

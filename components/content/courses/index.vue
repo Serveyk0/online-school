@@ -47,8 +47,9 @@ export default {
     }
   },
   mounted() {
+    console.log(window.location.hostname);
     axios
-      .get('http://localhost:3008/api/courses')
+      .get(`http://${window.location.hostname}:3007/api/courses`)
       .then((res) => (this.course = res.data))
   }
 }

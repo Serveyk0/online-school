@@ -39,13 +39,13 @@ export default {
   },
   mounted() {
     axios
-      .get('http://localhost:3008/api/users/all_users')
+      .get(`http://${window.location.hostname}:3007/api/users/all_users`)
       .then((res) => (this.users = res.data))
     this.id = localStorage.id
   },
   methods: {
     save() {
-      axios.post(`http://localhost:3008/api/users/update`, this.users);
+      axios.post(`http://${window.location.hostname}:3007/api/users/update`, this.users);
       this.close();
     },
   },

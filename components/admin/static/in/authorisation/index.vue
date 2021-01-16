@@ -36,7 +36,7 @@ export default {
         password: this.password,
       }
       axios
-        .get(`http://localhost:3008/api/users`, {
+        .get(`http://${window.location.hostname}:3007/api/users`, {
           params: {
             email: this.email,
             password: this.password,

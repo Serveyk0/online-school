@@ -45,7 +45,7 @@ export default {
         phone: this.phone,
       }
       axios
-        .post(`http://localhost:3008/api/mail`, form);
+        .post(`http://${window.location.hostname}:3007/api/mail`, form);
         this.changeRegister()
     },
     showModal() {
