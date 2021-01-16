@@ -1,7 +1,7 @@
 <template>
 <div class="online grid margin-0-auto">
   <div class="online-school grid grid-align-center grid-justify-center">
-    <Registration v-if="register" />
+    <Registration v-if="register" :changeRegister="changeRegister" />
     <div class="online-school__left grid margin-0-auto">
       <p class="online-school__text">{{ school_text }}</p>
       <p class="online-school__text">{{ school_second_text }}</p>

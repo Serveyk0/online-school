@@ -3,10 +3,12 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default
 const isDev = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  target: 'static',
+  target: 'me_static',
+  buildDir: "dist",
   mode: 'universal',
   generate: {
-    dir: 'my-dist'
+    dir: 'my-dist',
+    subFolders: false
   },
   robots: {
     UserAgent: '*',

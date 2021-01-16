@@ -9,7 +9,7 @@
         :add_method="addCourseDb"
       />
     </dialog>
-    <div class="course" v-for="(item, index) in course" :key="index">
+    <div class="course grid" v-for="(item, index) in course" :key="index">
       <h2 class="course__title">
         {{ COURSE + QUOTE_LEFT + item.name + QUOTE_RIGHT }}
       </h2>

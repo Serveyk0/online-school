@@ -1,5 +1,6 @@
 <template>
   <header class="header text-center">
+    <img class="logo" src="~/static/images/logo.jpg" alt="logo" />
     <h1 class="header__title">{{ title }}</h1>
   </header>
 </template> 

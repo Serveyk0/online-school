@@ -1,14 +1,15 @@
 <template>
-  <section className="registrationContent">
-    <div className="contactForm">
-      <h1 className="registrationTitle">title</h1>
-      <div className="inputBlock" key="{registrationIndex}">
-        <input className="formInput" v-model="name" />
-        <input className="formInput" v-model="surname" />
-        <input className="formInput" v-model="email" />
-        <input className="formInput" v-model="phone" />
+  <section class="registrationContent">
+    <div class="closeBtn" @click="() => changeRegister()" />
+    <div class="contactForm">
+      <h1 class="registrationTitle">Форма реєстрації</h1>
+      <div class="inputBlock">
+        <input class="formInput" v-model="name" placeholder="Ім'я" />
+        <input class="formInput" v-model="surname" placeholder="Прізвище" />
+        <input class="formInput" v-model="email" placeholder="email" />
+        <input class="formInput" v-model="phone" placeholder="Телефон" />
       </div>
-      <button className="red_button" @click="sendEmail">{registration}</button>
+      <button class="red_button" @click="() => sendEmail()">{{registration}}</button>
     </div>
   </section>
 </template> 
@@ -24,6 +25,7 @@ import Modal from './modal'
 export default {
   name: 'Registration',
   components: { Modal },
+  props: ['changeRegister'],
   data() {
     return {
       registration: _Register.REGISTRATION,
@@ -43,11 +45,11 @@ export default {
         phone: this.phone,
       }
       axios
-        .post(`http://localhost:3008/api/mail`, form)
-        .then((res) => console.log(res))
+        .post(`http://localhost:3008/api/mail`, form);
+        this.changeRegister()
     },
     showModal() {
-        this.show_modal = !this.show_modal;
+        this.changeRegister();
     },
   },
 }
