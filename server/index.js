@@ -20,7 +20,7 @@ app.use("/api/mail", mailRoutes);
 async function start() {
   console.log(process.env)
   try {
-    mongoose.connect(`mongodb+srv://${process.env.LOGIN}:${process.env.PWD}@${process.env.CLUSTER}.hvvrs.mongodb.net/${process.env.COLEECTION}?retryWrites=true&w=majority`, {
+    mongoose.connect(`mongodb+srv://${process.env.LOGIN}:${process.env.DB_PWD}@${process.env.CLUSTER}.hvvrs.mongodb.net/${process.env.COLEECTION}?retryWrites=true&w=majority`, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: false,
