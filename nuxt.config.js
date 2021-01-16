@@ -1,6 +1,10 @@
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: true,
+  generate: {
+    dir: 'generte_pages', // gh_pages/ instead of dist/
+    subFolders: false // HTML files are generated according to the route path
+  },
 
   buildDir: "dist",
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -50,7 +54,6 @@ export default {
     'nuxt-webfontloader',
     'cookie-universal-nuxt',
     '@nuxtjs/style-resources',
-    '@nuxtjs/sitemap',
     '@nuxtjs/dotenv',
     'nuxt-font-loader-strategy'
   ],
