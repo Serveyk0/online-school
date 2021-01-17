@@ -4,8 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3007
 var cors = require('cors');
-let config = require('../nuxt.config.js')
-config.dev = !(process.env.NODE_ENV === 'production')
+require('dotenv').config();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
