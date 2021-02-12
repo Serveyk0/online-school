@@ -8,6 +8,8 @@
     margin-top: 50px
     @media screen and ( min-width: 956px )
         margin-bottom: 50px
+    @media screen and ( max-width: 767px )
+        width: 80%
     .logo
         position: absolute
         max-width: 100px
@@ -28,3 +30,5 @@
         font-family: "Rotonda"
         text-align: center
         @include fluidFontSize(15px, 36px, 360px, 1280px, 15px)
+        @media screen and ( max-width: 767px )
+            min-width: 100%

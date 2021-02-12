@@ -7,6 +7,7 @@
       <MainCourse :course_text="item.main_course.text" :course_image="item.main_course.img" />
       <Specialists :course_specialists="item.peoples" :name="item.name" />
       <ConsistsOf :consists="item.consists_of" />
+      <CourseProgram />
       <InfoCourses :info_courses="item.info_courses" /> 
     </div>
   </div>
@@ -23,6 +24,7 @@ import Specialists from './specialists'
 import ConsistsOf from './consists_of'
 import MainCourse from './main_course'
 import InfoCourses from './info_courses'
+import CourseProgram from './course_program'
 import axios from 'axios'
 export default {
   name: 'Courses',
@@ -31,6 +33,7 @@ export default {
     ConsistsOf,
     InfoCourses,
     MainCourse,
+    CourseProgram
   },
   data() {
     return {
