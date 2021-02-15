@@ -16,10 +16,11 @@ router.post("/", async (req, res, next) => {
     
     await transporter.sendMail({
         from: '"noreply@vubo.org.ua',
-        to: "maximum.lenovo.ml@gmail.com",
-        subject: "Attachments",
+        to: process.env.EMAIL,
+        subject: "Online школа",
         text: new_string,
       });
+      res.json(1);
 })
 
 module.exports = router;
