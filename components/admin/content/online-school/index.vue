@@ -10,10 +10,10 @@
       </button>
     </div>
     <div class="online-school__right grid margin-0-auto">
-      <img class="squares" alt="squares" src="~/static/images/huggy.jpg" />
-      <img class="sun" alt="sun" src="~/static/images/sun.png" />
+      <img class="squares" alt="squares" src="~/static/images/huggy.webp" />
+      <img class="sun" alt="sun" src="~/static/images/sun.webp" />
       <div class="wrapper_star grid">
-        <img class="star" alt="star" src="~/static/images/star.png" />
+        <img class="star" alt="star" src="~/static/images/star.webp" />
       </div>
     </div>
   </div>

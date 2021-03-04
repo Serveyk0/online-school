@@ -4,7 +4,7 @@
     <div class="modules_block">
       <div class="module_block_first grid">
         <div class="module_block_first_left grid">
-          <img class="sun" alt="sun" src="~~/static/images/sun_3.png" />
+          <img class="sun" alt="sun" src="~~/static/images/sun_3.webp" />
           <p class="module_block_first_left_text padding_0 margin_0">
             Наша школа подарує Вам впевненість в собі та майбутньому. На наших
             заняттях Ви дізнаєтесь багато нового та цікавого не тільки про

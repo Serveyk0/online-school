@@ -28,7 +28,7 @@ export default {
   loading: { color: '#ddd' },
   css: [
     './assets/sass/default.sass',
-    './assets/fonts/font-face.sass'
+    './assets/fonts/font-face.scss'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
