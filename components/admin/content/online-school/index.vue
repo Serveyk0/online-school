@@ -11,9 +11,9 @@
     </div>
     <div class="online-school__right grid margin-0-auto">
       <img class="squares" alt="squares" src="~/static/images/huggy.jpg" />
-      <img class="sun" alt="sun" src="~/static/images/sun.jpg" />
+      <img class="sun" alt="sun" src="~/static/images/sun.png" />
       <div class="wrapper_star grid">
-        <img class="star" alt="star" src="~/static/images/star.jpg" />
+        <img class="star" alt="star" src="~/static/images/star.png" />
       </div>
     </div>
   </div>

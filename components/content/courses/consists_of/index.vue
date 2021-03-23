@@ -17,7 +17,7 @@
       <div class="consists-one__image">
         <img alt="course image" src="~~/static/images/course.jpg" />
       </div>
-      <img class="sun" alt="sun" src="~~/static/images/sun_3.jpg" />
+      <img class="sun" alt="sun" src="~~/static/images/sun_3.png" />
     </div>
   </div>
 </template> 
