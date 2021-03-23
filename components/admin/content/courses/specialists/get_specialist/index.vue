@@ -6,7 +6,7 @@
         :src="'/images/' + img"
         :alt="img"
       />
-      <img class="star" alt="star" src="/images/star2.webp" />
+      <img class="star" alt="star" src="/images/star2.jpg" />
     </div>
     <p class="one-specialist__name margin-0-auto">{{ name }}</p>
     <p class="one-specialist__profession margin-0-auto">{{ profession }}</p>

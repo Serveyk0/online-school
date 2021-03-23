@@ -12,9 +12,9 @@
       </div>
       </div>
       <div class="consists-one__image">
-        <img alt="course image" src="~~/static/images/course.webp" />
+        <img alt="course image" src="~~/static/images/course.jpg" />
       </div>
-      <img class="sun" alt="sun" src="~~/static/images/sun_3.webp" />
+      <img class="sun" alt="sun" src="~~/static/images/sun_3.jpg" />
     </div>
   </div>
 </template> 
