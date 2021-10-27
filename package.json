@@ -80,9 +80,6 @@
     "stylelint-config-standard": "^20.0.0",
     "vue-jest": "^3.0.4"
   },
-  "nuxt": {
-    "port": 8080
-  }
   "config": {
     "nuxt": {
       "host": "0.0.0.0",
